@@ -76,7 +76,7 @@
     /* ── HERO ── */
     .hero {
       background: var(--navy);
-      padding: 60px 20px 80px;
+      padding: 60px 20px 100px; /* Aumentei um pouco o padding para caber a setinha */
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -150,6 +150,25 @@
       margin-top: 14px;
       color: #6a8fae;
       font-size: 13px;
+    }
+
+    /* ── SCROLL ANIMADO ── */
+    .scroll-down {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--gold-light);
+      animation: bounce 2s infinite;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+      cursor: pointer;
+    }
+    .scroll-down:hover { opacity: 1; }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+      40% { transform: translate(-50%, -12px); }
+      60% { transform: translate(-50%, -6px); }
     }
 
     /* ── URGENCY STRIP ── */
@@ -388,9 +407,15 @@
       <a href="https://api.whatsapp.com/send/?phone=5511994687149&text=Ol%C3%A1%2C%20vim%20da%20campanha%20e%20quero%20garantir%20minha%20vaga%20no%20curso%20de%20Pedagogia%20para%20Magist%C3%A9rio!&type=phone_number&app_absent=0" class="btn-hero" target="_blank" rel="noopener">Quero garantir minha vaga no WhatsApp</a>
       <p class="hero-sub">Fale agora com um especialista — sem compromisso</p>
     </div>
+    
+    <a href="#proxima-secao" class="scroll-down" aria-label="Rolar para baixo">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </a>
   </section>
 
-  <div class="urgency">
+  <div class="urgency" id="proxima-secao">
     Mais de <strong>11.000 profissionais</strong> já se formaram conosco. <strong>A próxima turma começa em 05/04</strong> — garanta sua vaga antes de fechar!
   </div>
 
