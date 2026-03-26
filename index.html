@@ -5,398 +5,127 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pedagogia para Magistério — Unisafer Educacional</title>
   <meta name="description" content="Já tem o magistério? Regularize sua situação e obtenha o diploma de Pedagogia em 18 meses, reconhecido pelo MEC. Fale agora com um especialista." />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8V74VLD8QW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8V74VLD8QW');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --navy: #0d2340;
-      --navy-mid: #1a3a5c;
-      --navy-light: #274f7a;
-      --gold: #c89b3c;
-      --gold-light: #f0c96b;
-      --green: #25D366;
-      --green-dark: #1da851;
-      --white: #ffffff;
-      --off-white: #f7f5f0;
-      --gray-light: #e8e4dc;
-      --gray-text: #6b7280;
-      --text: #1a1a2e;
-      --radius: 14px;
+      --navy: #0d2340; --navy-mid: #1a3a5c; --navy-light: #274f7a;
+      --gold: #c89b3c; --gold-light: #f0c96b;
+      --green: #25D366; --green-dark: #1da851;
+      --white: #ffffff; --off-white: #f7f5f0;
+      --gray-light: #e8e4dc; --gray-text: #6b7280;
+      --text: #1a1a2e; --radius: 14px;
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--off-white);
-      color: var(--text);
-      line-height: 1.6;
-    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text); line-height: 1.6; }
 
     /* ── STICKY CTA ── */
-    .sticky-bar {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      z-index: 100;
-      background: var(--navy);
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      box-shadow: 0 -4px 24px rgba(0,0,0,0.18);
-    }
-    .sticky-bar p {
-      color: var(--white);
-      font-size: 13px;
-      line-height: 1.4;
-    }
+    .sticky-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; background: var(--navy); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 -4px 24px rgba(0,0,0,0.18); }
+    .sticky-bar p { color: var(--white); font-size: 13px; line-height: 1.4; }
     .sticky-bar strong { color: var(--gold-light); }
-    .btn-sticky {
-      flex-shrink: 0;
-      background: var(--green);
-      color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      padding: 10px 18px;
-      border-radius: 50px;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      white-space: nowrap;
-      transition: background .2s;
-    }
+    .btn-sticky { flex-shrink: 0; background: var(--green); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; padding: 10px 18px; border-radius: 50px; border: none; cursor: pointer; text-decoration: none; white-space: nowrap; transition: background .2s; }
     .btn-sticky:hover { background: var(--green-dark); }
 
     /* ── HERO ── */
-    .hero {
-      background: var(--navy);
-      padding: 60px 20px 100px; /* Aumentei um pouco o padding para caber a setinha */
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 300px; height: 300px;
-      border-radius: 50%;
-      background: rgba(200,155,60,0.08);
-      pointer-events: none;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -80px; left: -40px;
-      width: 240px; height: 240px;
-      border-radius: 50%;
-      background: rgba(200,155,60,0.06);
-      pointer-events: none;
-    }
-    .hero-badge {
-      display: inline-block;
-      background: rgba(200,155,60,0.15);
-      border: 1px solid var(--gold);
-      color: var(--gold-light);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      padding: 5px 16px;
-      border-radius: 50px;
-      margin-bottom: 24px;
-    }
-    .hero h1 {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700;
-      color: var(--white);
-      font-size: clamp(26px, 5vw, 40px);
-      line-height: 1.25;
-      max-width: 640px;
-      margin: 0 auto 20px;
-    }
-    .hero h1 em {
-      color: var(--gold-light);
-      font-style: normal;
-    }
-    .hero p {
-      color: #a8c0d8;
-      font-size: 16px;
-      max-width: 520px;
-      margin: 0 auto 32px;
-      line-height: 1.7;
-    }
-    .btn-hero {
-      display: inline-block;
-      background: var(--green);
-      color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 17px;
-      font-weight: 600;
-      padding: 16px 36px;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: background .2s, transform .15s;
-      box-shadow: 0 8px 32px rgba(37,211,102,0.3);
-    }
+    .hero { background: var(--navy); padding: 60px 20px 100px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; background: rgba(200,155,60,0.08); pointer-events: none; }
+    .hero::after { content: ''; position: absolute; bottom: -80px; left: -40px; width: 240px; height: 240px; border-radius: 50%; background: rgba(200,155,60,0.06); pointer-events: none; }
+    .hero-badge { display: inline-block; background: rgba(200,155,60,0.15); border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 5px 16px; border-radius: 50px; margin-bottom: 24px; }
+    .hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 700; color: var(--white); font-size: clamp(26px, 5vw, 40px); line-height: 1.25; max-width: 640px; margin: 0 auto 20px; }
+    .hero h1 em { color: var(--gold-light); font-style: normal; }
+    .hero p { color: #a8c0d8; font-size: 16px; max-width: 520px; margin: 0 auto 32px; line-height: 1.7; }
+    .btn-hero { display: inline-block; background: var(--green); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 17px; font-weight: 600; padding: 16px 36px; border-radius: 50px; text-decoration: none; transition: background .2s, transform .15s; box-shadow: 0 8px 32px rgba(37,211,102,0.3); }
     .btn-hero:hover { background: var(--green-dark); transform: translateY(-2px); }
-    .hero-sub {
-      margin-top: 14px;
-      color: #6a8fae;
-      font-size: 13px;
-    }
+    .hero-sub { margin-top: 14px; color: #6a8fae; font-size: 13px; }
 
     /* ── SCROLL ANIMADO ── */
-    .scroll-down {
-      position: absolute;
-      bottom: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: var(--gold-light);
-      animation: bounce 2s infinite;
-      opacity: 0.8;
-      transition: opacity 0.3s;
-      cursor: pointer;
-    }
+    .scroll-down { position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); color: var(--gold-light); animation: bounce 2s infinite; opacity: 0.8; transition: opacity 0.3s; cursor: pointer; }
     .scroll-down:hover { opacity: 1; }
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-      40% { transform: translate(-50%, -12px); }
-      60% { transform: translate(-50%, -6px); }
-    }
+    @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); } 40% { transform: translate(-50%, -12px); } 60% { transform: translate(-50%, -6px); } }
 
     /* ── URGENCY STRIP ── */
-    .urgency {
-      background: #fffbeb;
-      border-top: 3px solid var(--gold);
-      border-bottom: 3px solid var(--gold);
-      padding: 14px 20px;
-      text-align: center;
-      font-size: 14px;
-      color: #78460c;
-      font-weight: 500;
-    }
+    .urgency { background: #fffbeb; border-top: 3px solid var(--gold); border-bottom: 3px solid var(--gold); padding: 14px 20px; text-align: center; font-size: 14px; color: #78460c; font-weight: 500; }
     .urgency strong { color: #92370a; }
 
-    /* ── CONTAINER ── */
+    /* ── CONTAINER & SECTIONS ── */
     .container { max-width: 700px; margin: 0 auto; padding: 0 20px; }
-
-    /* ── SECTION ── */
     section { padding: 52px 0; }
     section + section { border-top: 1px solid var(--gray-light); }
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .section-title { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: clamp(22px, 4vw, 30px); color: var(--navy); line-height: 1.3; margin-bottom: 20px; }
 
-    .section-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 10px;
-    }
-    .section-title {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700;
-      font-size: clamp(22px, 4vw, 30px);
-      color: var(--navy);
-      line-height: 1.3;
-      margin-bottom: 20px;
-    }
-
-    /* ── DOR ── */
+    /* ── LISTAS E CARDS ── */
     .pain-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .pain-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      background: var(--white);
-      border: 1px solid var(--gray-light);
-      border-radius: var(--radius);
-      padding: 14px 16px;
-      font-size: 14px;
-      line-height: 1.5;
-    }
+    .pain-list li { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--gray-light); border-radius: var(--radius); padding: 14px 16px; font-size: 14px; line-height: 1.5; }
     .pain-list li .icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-
-    /* ── BENEFÍCIOS ── */
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .benefit-card {
-      background: var(--white);
-      border: 1px solid var(--gray-light);
-      border-radius: var(--radius);
-      padding: 20px 16px;
-      text-align: center;
-    }
+    .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .benefit-card { background: var(--white); border: 1px solid var(--gray-light); border-radius: var(--radius); padding: 20px 16px; text-align: center; }
     .benefit-icon { font-size: 28px; margin-bottom: 10px; }
     .benefit-title { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
     .benefit-desc { font-size: 12px; color: var(--gray-text); line-height: 1.5; }
 
-    /* ── STATS ── */
-    .stats-row {
-      display: flex;
-      justify-content: space-around;
-      text-align: center;
-      background: var(--navy);
-      border-radius: var(--radius);
-      padding: 28px 16px;
-      gap: 8px;
-    }
-    .stat-num {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700;
-      font-size: 30px;
-      color: var(--gold-light);
-      display: block;
-    }
+    /* ── STATS & DEPOIMENTOS ── */
+    .stats-row { display: flex; justify-content: space-around; text-align: center; background: var(--navy); border-radius: var(--radius); padding: 28px 16px; gap: 8px; }
+    .stat-num { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 30px; color: var(--gold-light); display: block; }
     .stat-label { font-size: 12px; color: #7fa3c0; margin-top: 4px; }
-
-    /* ── DEPOIMENTOS ── */
     .testimonials { display: flex; flex-direction: column; gap: 16px; }
-    .testimonial {
-      background: var(--white);
-      border: 1px solid var(--gray-light);
-      border-left: 4px solid var(--green);
-      border-radius: 0 var(--radius) var(--radius) 0;
-      padding: 20px;
-    }
-    .testimonial-text {
-      font-size: 14px;
-      line-height: 1.7;
-      color: var(--text);
-      font-style: italic;
-      margin-bottom: 12px;
-    }
+    .testimonial { background: var(--white); border: 1px solid var(--gray-light); border-left: 4px solid var(--green); border-radius: 0 var(--radius) var(--radius) 0; padding: 20px; }
+    .testimonial-text { font-size: 14px; line-height: 1.7; color: var(--text); font-style: italic; margin-bottom: 12px; }
     .testimonial-author { font-size: 13px; font-weight: 600; color: var(--navy); }
     .testimonial-role { font-size: 12px; color: var(--gray-text); }
 
-    /* ── COMO FUNCIONA ── */
+    /* ── COMO FUNCIONA E PREÇO ── */
     .steps { display: flex; flex-direction: column; gap: 16px; }
-    .step {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-    .step-num {
-      width: 36px; height: 36px;
-      flex-shrink: 0;
-      background: var(--navy);
-      color: var(--gold-light);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700;
-      font-size: 16px;
-    }
+    .step { display: flex; align-items: flex-start; gap: 16px; }
+    .step-num { width: 36px; height: 36px; flex-shrink: 0; background: var(--navy); color: var(--gold-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; }
     .step-title { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
     .step-desc { font-size: 13px; color: var(--gray-text); line-height: 1.6; }
-
-    /* ── PREÇO ── */
-    .price-box {
-      background: var(--white);
-      border: 2px solid var(--navy);
-      border-radius: var(--radius);
-      padding: 28px 24px;
-      text-align: center;
-      margin-bottom: 16px;
-    }
+    .price-box { background: var(--white); border: 2px solid var(--navy); border-radius: var(--radius); padding: 28px 24px; text-align: center; margin-bottom: 16px; }
     .price-tag { font-size: 13px; color: var(--gray-text); margin-bottom: 4px; }
-    .price-main {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700;
-      font-size: 42px;
-      color: var(--navy);
-      margin-bottom: 4px;
-    }
+    .price-main { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 42px; color: var(--navy); margin-bottom: 4px; }
     .price-sub { font-size: 13px; color: var(--gray-text); line-height: 2; }
-    .price-divider {
-      border: none;
-      border-top: 1px solid var(--gray-light);
-      margin: 16px 0;
-    }
+    .price-divider { border: none; border-top: 1px solid var(--gray-light); margin: 16px 0; }
     .price-options { display: flex; flex-direction: column; gap: 10px; }
-    .price-option {
-      background: var(--off-white);
-      border: 1px solid var(--gray-light);
-      border-radius: 10px;
-      padding: 12px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 14px;
-    }
+    .price-option { background: var(--off-white); border: 1px solid var(--gray-light); border-radius: 10px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
     .price-option strong { color: var(--navy); font-size: 16px; }
 
-    /* ── FAQ ── */
+    /* ── FAQ & CTA FINAL ── */
     .faq-list { display: flex; flex-direction: column; gap: 0; }
     .faq-item { border-bottom: 1px solid var(--gray-light); padding: 18px 0; }
     .faq-item:first-child { border-top: 1px solid var(--gray-light); }
     .faq-q { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
     .faq-a { font-size: 13px; color: var(--gray-text); line-height: 1.7; }
-
-    /* ── CTA FINAL ── */
-    .cta-final {
-      background: var(--navy);
-      border-radius: var(--radius);
-      padding: 40px 24px;
-      text-align: center;
-    }
-    .cta-final h2 {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700;
-      color: var(--white);
-      font-size: clamp(20px, 4vw, 28px);
-      margin-bottom: 12px;
-      line-height: 1.3;
-    }
+    .cta-final { background: var(--navy); border-radius: var(--radius); padding: 40px 24px; text-align: center; }
+    .cta-final h2 { font-family: 'DM Sans', sans-serif; font-weight: 700; color: var(--white); font-size: clamp(20px, 4vw, 28px); margin-bottom: 12px; line-height: 1.3; }
     .cta-final p { color: #a8c0d8; font-size: 14px; margin-bottom: 28px; }
-    .btn-cta {
-      display: inline-block;
-      background: var(--green);
-      color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      padding: 16px 36px;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: background .2s, transform .15s;
-      box-shadow: 0 8px 32px rgba(37,211,102,0.3);
-    }
+    .btn-cta { display: inline-block; background: var(--green); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600; padding: 16px 36px; border-radius: 50px; text-decoration: none; transition: background .2s, transform .15s; box-shadow: 0 8px 32px rgba(37,211,102,0.3); }
     .btn-cta:hover { background: var(--green-dark); transform: translateY(-2px); }
     .cta-note { color: #6a8fae; font-size: 12px; margin-top: 12px; }
 
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 32px 20px 90px;
-      font-size: 12px;
-      color: var(--gray-text);
-    }
+    /* ── FOOTER & MOBILE ── */
+    footer { text-align: center; padding: 32px 20px 90px; font-size: 12px; color: var(--gray-text); }
     footer a { color: var(--gray-text); }
-
-    /* ── MOBILE ── */
-    @media (max-width: 480px) {
-      .benefits-grid { grid-template-columns: 1fr 1fr; }
-      .stats-row { gap: 4px; }
-      .stat-num { font-size: 24px; }
-      .sticky-bar p { display: none; }
-    }
+    @media (max-width: 480px) { .benefits-grid { grid-template-columns: 1fr 1fr; } .stats-row { gap: 4px; } .stat-num { font-size: 24px; } .sticky-bar p { display: none; } }
   </style>
 </head>
 <body>
 
   <div class="sticky-bar">
     <p><strong>⚠️ Próxima turma: 05/04</strong> — vagas limitadas!</p>
-    <a href="https://api.whatsapp.com/send/?phone=5511994687149&text=Ol%C3%A1%2C%20vim%20da%20campanha%20e%20quero%20garantir%20minha%20vaga%20no%20curso%20de%20Pedagogia%20para%20Magist%C3%A9rio!&type=phone_number&app_absent=0" class="btn-sticky" target="_blank" rel="noopener">Garantir minha vaga</a>
+    <a href="#" onclick="redirecionarWhatsApp(event, 'Olá, vim da campanha e quero garantir minha vaga no curso de Pedagogia para Magistério!')" class="btn-sticky">Garantir minha vaga</a>
   </div>
 
   <section class="hero">
@@ -404,10 +133,9 @@
       <div class="hero-badge">⚠️ Próxima turma: 05 de abril — vagas limitadas</div>
       <h1>Você tem o magistério e ainda não <em>possui Pedagogia?</em></h1>
       <p>Obtenha seu diploma de Pedagogia em 18 meses, de forma semipresencial e reconhecido pelo MEC — e abra as portas para concursos públicos e novas oportunidades na educação.</p>
-      <a href="https://api.whatsapp.com/send/?phone=5511994687149&text=Ol%C3%A1%2C%20vim%20da%20campanha%20e%20quero%20garantir%20minha%20vaga%20no%20curso%20de%20Pedagogia%20para%20Magist%C3%A9rio!&type=phone_number&app_absent=0" class="btn-hero" target="_blank" rel="noopener">Quero garantir minha vaga no WhatsApp</a>
+      <a href="#" onclick="redirecionarWhatsApp(event, 'Olá, vim da campanha e quero garantir minha vaga no curso de Pedagogia para Magistério!')" class="btn-hero">Quero garantir minha vaga no WhatsApp</a>
       <p class="hero-sub">Fale agora com um especialista — sem compromisso</p>
     </div>
-    
     <a href="#proxima-secao" class="scroll-down" aria-label="Rolar para baixo">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="6 9 12 15 18 9"></polyline>
@@ -437,36 +165,12 @@
       <p class="section-label">A solução</p>
       <h2 class="section-title">O curso feito para quem tem magistério e quer avançar</h2>
       <div class="benefits-grid">
-        <div class="benefit-card">
-          <div class="benefit-icon">🎓</div>
-          <div class="benefit-title">Diploma reconhecido pelo MEC</div>
-          <div class="benefit-desc">Aproveitamento de estudos amparado pela Lei nº 9.394/96</div>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">⏱️</div>
-          <div class="benefit-title">A partir de 18 meses</div>
-          <div class="benefit-desc">Com aproveitamento do seu magistério</div>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">📱</div>
-          <div class="benefit-title">Semipresencial</div>
-          <div class="benefit-desc">Videoaulas + 1 encontro ao vivo por mês via Google Meet</div>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">📋</div>
-          <div class="benefit-title">Apto a concursos</div>
-          <div class="benefit-desc">Ensino infantil, fundamental I e gestão escolar</div>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">💬</div>
-          <div class="benefit-title">Suporte pelo WhatsApp</div>
-          <div class="benefit-desc">Tutores especializados sempre disponíveis</div>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">📖</div>
-          <div class="benefit-title">Material didático</div>
-          <div class="benefit-desc">Ebook interativo, fácil leitura e bem ilustrado</div>
-        </div>
+        <div class="benefit-card"><div class="benefit-icon">🎓</div><div class="benefit-title">Diploma reconhecido pelo MEC</div><div class="benefit-desc">Aproveitamento de estudos amparado pela Lei nº 9.394/96</div></div>
+        <div class="benefit-card"><div class="benefit-icon">⏱️</div><div class="benefit-title">A partir de 18 meses</div><div class="benefit-desc">Com aproveitamento do seu magistério</div></div>
+        <div class="benefit-card"><div class="benefit-icon">📱</div><div class="benefit-title">Semipresencial</div><div class="benefit-desc">Videoaulas + 1 encontro ao vivo por mês via Google Meet</div></div>
+        <div class="benefit-card"><div class="benefit-icon">📋</div><div class="benefit-title">Apto a concursos</div><div class="benefit-desc">Ensino infantil, fundamental I e gestão escolar</div></div>
+        <div class="benefit-card"><div class="benefit-icon">💬</div><div class="benefit-title">Suporte pelo WhatsApp</div><div class="benefit-desc">Tutores especializados sempre disponíveis</div></div>
+        <div class="benefit-card"><div class="benefit-icon">📖</div><div class="benefit-title">Material didático</div><div class="benefit-desc">Ebook interativo, fácil leitura e bem ilustrado</div></div>
       </div>
     </div>
   </section>
@@ -474,22 +178,10 @@
   <section style="padding: 40px 0;">
     <div class="container">
       <div class="stats-row">
-        <div>
-          <span class="stat-num">11 mil+</span>
-          <div class="stat-label">alunos formados</div>
-        </div>
-        <div>
-          <span class="stat-num">18 meses</span>
-          <div class="stat-label">duração mínima</div>
-        </div>
-        <div>
-          <span class="stat-num">MEC</span>
-          <div class="stat-label">reconhecido</div>
-        </div>
-        <div>
-          <span class="stat-num">SP</span>
-          <div class="stat-label">e todo o Brasil</div>
-        </div>
+        <div><span class="stat-num">11 mil+</span><div class="stat-label">alunos formados</div></div>
+        <div><span class="stat-num">18 meses</span><div class="stat-label">duração mínima</div></div>
+        <div><span class="stat-num">MEC</span><div class="stat-label">reconhecido</div></div>
+        <div><span class="stat-num">SP</span><div class="stat-label">e todo o Brasil</div></div>
       </div>
     </div>
   </section>
@@ -499,21 +191,9 @@
       <p class="section-label">Quem já passou por aqui</p>
       <h2 class="section-title">O que dizem sobre nós</h2>
       <div class="testimonials">
-        <div class="testimonial">
-          <p class="testimonial-text">"Tinha o magistério há anos e não conseguia avançar na carreira. Fiz o curso e em 18 meses já estava apta para o concurso. Melhor decisão que tomei!"</p>
-          <div class="testimonial-author">Ana Paula S.</div>
-          <div class="testimonial-role">Docente — São Paulo, SP</div>
-        </div>
-        <div class="testimonial">
-          <p class="testimonial-text">"Achei que ia ser complicado conciliar com o trabalho, mas o formato semipresencial facilitou tudo. O suporte pelo WhatsApp estava sempre disponível quando precisei."</p>
-          <div class="testimonial-author">Fernanda R.</div>
-          <div class="testimonial-role">Especialista em Educação — Unisafer</div>
-        </div>
-        <div class="testimonial">
-          <p class="testimonial-text">"Fiz minha matrícula com um investimento acessível e consegui meu diploma em tempo recorde. Hoje estou dando aulas no ensino fundamental e com total realização profissional."</p>
-          <div class="testimonial-author">Carla M.</div>
-          <div class="testimonial-role">Profissional de Educação — formada em 2024</div>
-        </div>
+        <div class="testimonial"><p class="testimonial-text">"Tinha o magistério há anos e não conseguia avançar na carreira. Fiz o curso e em 18 meses já estava apta para o concurso. Melhor decisão que tomei!"</p><div class="testimonial-author">Ana Paula S.</div><div class="testimonial-role">Docente — São Paulo, SP</div></div>
+        <div class="testimonial"><p class="testimonial-text">"Achei que ia ser complicado conciliar com o trabalho, mas o formato semipresencial facilitou tudo. O suporte pelo WhatsApp estava sempre disponível quando precisei."</p><div class="testimonial-author">Fernanda R.</div><div class="testimonial-role">Especialista em Educação — Unisafer</div></div>
+        <div class="testimonial"><p class="testimonial-text">"Fiz minha matrícula com um investimento acessível e consegui meu diploma em tempo recorde. Hoje estou dando aulas no ensino fundamental e com total realização profissional."</p><div class="testimonial-author">Carla M.</div><div class="testimonial-role">Profissional de Educação — formada em 2024</div></div>
       </div>
     </div>
   </section>
@@ -523,34 +203,10 @@
       <p class="section-label">O processo</p>
       <h2 class="section-title">Como funciona?</h2>
       <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div>
-            <div class="step-title">Fale com nosso especialista no WhatsApp</div>
-            <div class="step-desc">Tire suas dúvidas, entenda como seu magistério é aproveitado e saiba quais documentos precisa separar.</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div>
-            <div class="step-title">Faça sua matrícula</div>
-            <div class="step-desc">Processo simples, rápido e sem burocracia. Matrícula a partir de R$199 com boleto ou Pix.</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div>
-            <div class="step-title">Estude no seu ritmo</div>
-            <div class="step-desc">Videoaulas, ebook interativo e 1 aula ao vivo por mês via Google Meet. Suporte por WhatsApp e tutoria especializada.</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <div>
-            <div class="step-title">Receba seu diploma em 18 meses</div>
-            <div class="step-desc">Diploma reconhecido pelo MEC, apto para concursos públicos, rede particular e gestão escolar.</div>
-          </div>
-        </div>
+        <div class="step"><div class="step-num">1</div><div><div class="step-title">Fale com nosso especialista no WhatsApp</div><div class="step-desc">Tire suas dúvidas, entenda como seu magistério é aproveitado e saiba quais documentos precisa separar.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div><div class="step-title">Faça sua matrícula</div><div class="step-desc">Processo simples, rápido e sem burocracia. Matrícula a partir de R$199 com boleto ou Pix.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div><div class="step-title">Estude no seu ritmo</div><div class="step-desc">Videoaulas, ebook interativo e 1 aula ao vivo por mês via Google Meet. Suporte por WhatsApp e tutoria especializada.</div></div></div>
+        <div class="step"><div class="step-num">4</div><div><div class="step-title">Receba seu diploma em 18 meses</div><div class="step-desc">Diploma reconhecido pelo MEC, apto para concursos públicos, rede particular e gestão escolar.</div></div></div>
       </div>
     </div>
   </section>
@@ -566,22 +222,11 @@
         <hr class="price-divider" />
         <p style="font-size: 13px; color: var(--gray-text); margin-bottom: 12px;">Escolha a forma de pagamento das mensalidades:</p>
         <div class="price-options">
-          <div class="price-option">
-            <span>15x no boleto</span>
-            <strong>R$ 249/mês</strong>
-          </div>
-          <div class="price-option">
-            <span>12x no cartão</span>
-            <strong>R$ 280/mês</strong>
-          </div>
-          <div class="price-option">
-            <span>À vista</span>
-            <strong>10% de desconto</strong>
-          </div>
+          <div class="price-option"><span>15x no boleto</span><strong>R$ 249/mês</strong></div>
+          <div class="price-option"><span>12x no cartão</span><strong>R$ 280/mês</strong></div>
+          <div class="price-option"><span>À vista</span><strong>10% de desconto</strong></div>
         </div>
-        
-        <a href="https://api.whatsapp.com/send/?phone=5511994687149&text=Ol%C3%A1%2C%20vim%20do%20site%20e%20quero%20a%20condi%C3%A7%C3%A3o%20exclusiva&type=phone_number&app_absent=0" class="btn-cta" style="margin-top: 24px; display: inline-block;" target="_blank" rel="noopener">Clique aqui e garanta uma promoção exclusiva</a>
-        
+        <a href="#" onclick="redirecionarWhatsApp(event, 'Olá, vim do site e quero a condição exclusiva')" class="btn-cta" style="margin-top: 24px; display: inline-block;">Clique aqui e garanta uma promoção exclusiva</a>
       </div>
       <p style="font-size: 12px; color: var(--gray-text); text-align: center;">* Os valores podem sofrer alterações sem aviso prévio. Promoções e descontos não cumulativos.</p>
     </div>
@@ -592,26 +237,11 @@
       <p class="section-label">Dúvidas frequentes</p>
       <h2 class="section-title">Perguntas e respostas</h2>
       <div class="faq-list">
-        <div class="faq-item">
-          <p class="faq-q">Preciso ter o magistério para fazer o curso?</p>
-          <p class="faq-a">Sim. Este curso é exclusivo para profissionais que já possuem o magistério / normal médio. Ele é estruturado justamente para aproveitar os seus estudos anteriores e encurtar a formação.</p>
-        </div>
-        <div class="faq-item">
-          <p class="faq-q">O diploma é reconhecido pelo MEC?</p>
-          <p class="faq-a">Sim. O aproveitamento de estudos é amparado pela Lei nº 9.394/96 e o diploma é emitido por instituições parceiras reconhecidas pelo MEC.</p>
-        </div>
-        <div class="faq-item">
-          <p class="faq-q">Como funcionam as aulas?</p>
-          <p class="faq-a">Você estuda pelas videoaulas e ebook interativo no seu ritmo, tem 1 aula ao vivo por mês via Google Meet e conta com suporte por WhatsApp e tutoria especializada sempre que precisar.</p>
-        </div>
-        <div class="faq-item">
-          <p class="faq-q">Quando começa a próxima turma?</p>
-          <p class="faq-a">A próxima turma está prevista para 05/04. As vagas são limitadas, por isso recomendamos entrar em contato o quanto antes para garantir sua matrícula.</p>
-        </div>
-        <div class="faq-item">
-          <p class="faq-q">Consigo fazer o curso trabalhando?</p>
-          <p class="faq-a">Com certeza. O curso foi desenhado para profissionais que trabalham. O formato semipresencial com aulas gravadas permite que você estude nos horários que tiver disponíveis.</p>
-        </div>
+        <div class="faq-item"><p class="faq-q">Preciso ter o magistério para fazer o curso?</p><p class="faq-a">Sim. Este curso é exclusivo para profissionais que já possuem o magistério / normal médio. Ele é estruturado justamente para aproveitar os seus estudos anteriores e encurtar a formação.</p></div>
+        <div class="faq-item"><p class="faq-q">O diploma é reconhecido pelo MEC?</p><p class="faq-a">Sim. O aproveitamento de estudos é amparado pela Lei nº 9.394/96 e o diploma é emitido por instituições parceiras reconhecidas pelo MEC.</p></div>
+        <div class="faq-item"><p class="faq-q">Como funcionam as aulas?</p><p class="faq-a">Você estuda pelas videoaulas e ebook interativo no seu ritmo, tem 1 aula ao vivo por mês via Google Meet e conta com suporte por WhatsApp e tutoria especializada sempre que precisar.</p></div>
+        <div class="faq-item"><p class="faq-q">Quando começa a próxima turma?</p><p class="faq-a">A próxima turma está prevista para 05/04. As vagas são limitadas, por isso recomendamos entrar em contato o quanto antes para garantir sua matrícula.</p></div>
+        <div class="faq-item"><p class="faq-q">Consigo fazer o curso trabalhando?</p><p class="faq-a">Com certeza. O curso foi desenhado para profissionais que trabalham. O formato semipresencial com aulas gravadas permite que você estude nos horários que tiver disponíveis.</p></div>
       </div>
     </div>
   </section>
@@ -621,7 +251,7 @@
       <div class="cta-final">
         <h2>Dê o próximo passo na sua carreira hoje</h2>
         <p>Fale agora com um especialista da Unisafer, tire todas as suas dúvidas e garanta sua vaga na próxima turma — sem compromisso.</p>
-        <a href="https://api.whatsapp.com/send/?phone=5511994687149&text=Ol%C3%A1%2C%20vim%20da%20campanha%20e%20quero%20garantir%20minha%20vaga%20no%20curso%20de%20Pedagogia%20para%20Magist%C3%A9rio!&type=phone_number&app_absent=0" class="btn-cta" target="_blank" rel="noopener">Falar com especialista no WhatsApp</a>
+        <a href="#" onclick="redirecionarWhatsApp(event, 'Olá, vim da campanha e quero garantir minha vaga no curso de Pedagogia para Magistério!')" class="btn-cta">Falar com especialista no WhatsApp</a>
         <p class="cta-note">Atendimento de seg a sex, das 9h às 18h</p>
       </div>
     </div>
@@ -631,6 +261,41 @@
     <p>© 2025 Unisafer Educacional. Todos os direitos reservados.</p>
     <p style="margin-top: 6px;"><a href="https://unisafereducacional.com.br">unisafereducacional.com.br</a> · (11) 99468-7149</p>
   </footer>
+
+  <script>
+    function redirecionarWhatsApp(event, mensagem) {
+      event.preventDefault(); 
+
+      // 1. Números da equipe (com o de maior peso repetido)
+      const numerosEquipe = [
+        "5511994687149",
+        "5511939118320", 
+        "5511939118320"  
+      ];
+
+      // 2. Prepara a mensagem e sorteia o número
+      const mensagemCodificada = encodeURIComponent(mensagem);
+      const indiceSorteado = Math.floor(Math.random() * numerosEquipe.length);
+      const numeroEscolhido = numerosEquipe[indiceSorteado];
+      const linkFinal = `https://wa.me/${numeroEscolhido}?text=${mensagemCodificada}`;
+
+      // 3. Avisa o META ADS (Facebook) que gerou um lead
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead');
+      }
+
+      // 4. Avisa o GOOGLE ANALYTICS (GA4) sobre o clique no WhatsApp
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'clique_whatsapp_lp', {
+          'event_category': 'Contato',
+          'event_label': 'Botao_Magisterio'
+        });
+      }
+
+      // 5. Abre o WhatsApp na nova aba
+      window.open(linkFinal, '_blank');
+    }
+  </script>
 
 </body>
 </html>
