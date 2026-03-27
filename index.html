@@ -280,25 +280,42 @@
     function redirecionarWhatsApp(event, mensagem) {
       event.preventDefault(); 
 
-      // 1. Números da equipe (com o de maior peso repetido)
+      // 1. A nova lista de números (sem repetições, divisão justa em 33,3% para cada)
       const numerosEquipe = [
-        "5511994687149",
-        "5511939118320", 
-        "5511939118320"  
+        "5511976203004", // Final 3004
+        "5511939118320", // Final 8320
+        "5511994687149"  // Final 7149
       ];
 
-      // 2. Prepara a mensagem e sorteia o número
+      // 2. Lógica da Roleta Justa (Round-Robin usando a memória do navegador)
+      let ultimoIndice = localStorage.getItem('indiceRoletaZap');
+      
+      // Se for a primeira vez da pessoa, começa no índice 0. Se não, vai pro próximo.
+      if (ultimoIndice === null || isNaN(ultimoIndice)) {
+        ultimoIndice = 0;
+      } else {
+        ultimoIndice = parseInt(ultimoIndice) + 1;
+      }
+
+      // Se a fila passar do limite de números (3), volta pro começo (0)
+      if (ultimoIndice >= numerosEquipe.length) {
+        ultimoIndice = 0;
+      }
+
+      // Salva a vez para o próximo clique desta pessoa
+      localStorage.setItem('indiceRoletaZap', ultimoIndice);
+
+      // 3. Prepara a mensagem e monta o link
       const mensagemCodificada = encodeURIComponent(mensagem);
-      const indiceSorteado = Math.floor(Math.random() * numerosEquipe.length);
-      const numeroEscolhido = numerosEquipe[indiceSorteado];
+      const numeroEscolhido = numerosEquipe[ultimoIndice];
       const linkFinal = `https://wa.me/${numeroEscolhido}?text=${mensagemCodificada}`;
 
-      // 3. Avisa o META ADS (Facebook) que gerou um lead
+      // 4. Avisa o META ADS (Facebook) que gerou um lead
       if (typeof fbq !== 'undefined') {
         fbq('track', 'Lead');
       }
 
-      // 4. Avisa o GOOGLE ANALYTICS (GA4) sobre o clique no WhatsApp
+      // 5. Avisa o GOOGLE ANALYTICS (GA4) sobre o clique no WhatsApp
       if (typeof gtag !== 'undefined') {
         gtag('event', 'clique_whatsapp_lp', {
           'event_category': 'Contato',
@@ -306,7 +323,7 @@
         });
       }
 
-      // 5. Abre o WhatsApp na nova aba
+      // 6. Abre o WhatsApp na nova aba
       window.open(linkFinal, '_blank');
     }
   </script>
