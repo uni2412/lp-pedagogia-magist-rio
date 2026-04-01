@@ -11,9 +11,10 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+
     gtag('config', 'G-8V74VLD8QW');
   </script>
-  <script>
+<script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -276,71 +277,54 @@
   </footer>
 
   <script>
-    const SUPABASE_URL = 'https://coheakucywrntwqpwsne.supabase.co';
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNvaGVha3VjeXdybnR3cXB3c25lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4ODEzOTgsImV4cCI6MjA5MDQ1NzM5OH0.ksHr2N4hSgI_iiqyN2tUrrjz5tFqB3C7f5mUeTcJBHI';
+    function redirecionarWhatsApp(event, mensagem) {
+      event.preventDefault(); 
 
-    const numerosEquipe = [
-      "5511976203004",
-      "5511939118320",
-      "5511994687149"
-    ];
+      // 1. A nova lista de números (sem repetições, divisão justa em 33,3% para cada)
+      const numerosEquipe = [
+        "5511976203004", // Final 3004
+        "5511939118320", // Final 8320
+        "5511994687149"  // Final 7149
+      ];
 
-    async function redirecionarWhatsApp(event, mensagem) {
-      event.preventDefault();
-
-      try {
-        const resGet = await fetch(
-          `${SUPABASE_URL}/rest/v1/roleta_whatsapp?id=eq.estado&select=indice_atual`,
-          {
-            headers: {
-              'apikey': SUPABASE_ANON_KEY,
-              'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
-            }
-          }
-        );
-
-        const dados = await resGet.json();
-        const indiceAtual = dados[0]?.indice_atual ?? 0;
-
-        const proximoIndice = (indiceAtual + 1) % numerosEquipe.length;
-
-        await fetch(
-          `${SUPABASE_URL}/rest/v1/roleta_whatsapp?id=eq.estado`,
-          {
-            method: 'PATCH',
-            headers: {
-              'apikey': SUPABASE_ANON_KEY,
-              'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-              'Content-Type': 'application/json',
-              'Prefer': 'return=minimal'
-            },
-            body: JSON.stringify({ indice_atual: proximoIndice })
-          }
-        );
-
-        const numeroEscolhido = numerosEquipe[indiceAtual];
-        const mensagemCodificada = encodeURIComponent(mensagem);
-        const linkFinal = `https://wa.me/${numeroEscolhido}?text=${mensagemCodificada}`;
-
-        if (typeof fbq !== 'undefined') {
-          fbq('track', 'Lead');
-        }
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'clique_whatsapp_lp', {
-            'event_category': 'Contato',
-            'event_label': 'Botao_Magisterio'
-          });
-        }
-
-        window.open(linkFinal, '_blank');
-
-      } catch (erro) {
-        console.error('Erro na roleta:', erro);
-        let indice = parseInt(localStorage.getItem('indiceRoletaZap') || '0');
-        const numeroEscolhido = numerosEquipe[indice];
-        localStorage.setItem('indiceRoletaZap', ((indice + 1) % numerosEquipe.length).toString());
-        window.open(`https://wa.me/${numeroEscolhido}?text=${encodeURIComponent(mensagem)}`, '_blank');
+      // 2. Lógica da Roleta Justa (Round-Robin usando a memória do navegador)
+      let ultimoIndice = localStorage.getItem('indiceRoletaZap');
+      
+      // Se for a primeira vez da pessoa, começa no índice 0. Se não, vai pro próximo.
+      if (ultimoIndice === null || isNaN(ultimoIndice)) {
+        ultimoIndice = 0;
+      } else {
+        ultimoIndice = parseInt(ultimoIndice) + 1;
       }
+
+      // Se a fila passar do limite de números (3), volta pro começo (0)
+      if (ultimoIndice >= numerosEquipe.length) {
+        ultimoIndice = 0;
+      }
+
+      // Salva a vez para o próximo clique desta pessoa
+      localStorage.setItem('indiceRoletaZap', ultimoIndice);
+
+      // 3. Prepara a mensagem e monta o link
+      const mensagemCodificada = encodeURIComponent(mensagem);
+      const numeroEscolhido = numerosEquipe[ultimoIndice];
+      const linkFinal = `https://wa.me/${numeroEscolhido}?text=${mensagemCodificada}`;
+
+      // 4. Avisa o META ADS (Facebook) que gerou um lead
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead');
+      }
+
+      // 5. Avisa o GOOGLE ANALYTICS (GA4) sobre o clique no WhatsApp
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'clique_whatsapp_lp', {
+          'event_category': 'Contato',
+          'event_label': 'Botao_Magisterio'
+        });
+      }
+
+      // 6. Abre o WhatsApp (Corrigido para o navegador do Facebook/Insta)
+      window.location.href = linkFinal;
     }
   </script>
 
