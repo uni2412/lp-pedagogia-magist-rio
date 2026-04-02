@@ -277,7 +277,7 @@
     <p style="margin-top: 6px;"><a href="https://unisafereducacional.com.br">unisafereducacional.com.br</a> · (11) 99468-7149</p>
   </footer>
 
-  <!-- ✅ CÓDIGO CORRIGIDO COM LUMIQ -->
+  <!-- ✅ CÓDIGO ATUALIZADO COM LUMIQ API -->
   <script>
     async function redirecionarWhatsApp(event, mensagem) {
       event.preventDefault(); 
@@ -295,9 +295,9 @@
         });
       }
 
-      // 3. Redireciona pro link da LUMIQ (distribui automaticamente)
+      // 3. Redireciona pro link da LUMIQ (DIRETO via API - SEM tela de carregamento!)
       const mensagemCodificada = encodeURIComponent(mensagem);
-      const linkLumiq = `https://lumiq-smoky.vercel.app/capture/d8ql45?text=${mensagemCodificada}`;
+      const linkLumiq = `https://lumiq-smoky.vercel.app/api/link/d8ql45?text=${mensagemCodificada}`;
       
       // 4. Abre o link (funciona em todos navegadores, incluindo Facebook/Instagram)
       window.location.href = linkLumiq;
