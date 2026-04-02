@@ -11,10 +11,10 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-8V74VLD8QW');
   </script>
-<script>
+  
+  <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -29,6 +29,7 @@
   <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1472236274248025&ev=PageView&noscript=1"
   /></noscript>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -276,46 +277,17 @@
     <p style="margin-top: 6px;"><a href="https://unisafereducacional.com.br">unisafereducacional.com.br</a> · (11) 99468-7149</p>
   </footer>
 
+  <!-- ✅ CÓDIGO CORRIGIDO COM LUMIQ -->
   <script>
-    function redirecionarWhatsApp(event, mensagem) {
+    async function redirecionarWhatsApp(event, mensagem) {
       event.preventDefault(); 
 
-      // 1. A nova lista de números (sem repetições, divisão justa em 33,3% para cada)
-      const numerosEquipe = [
-        "5511976203004", // Final 3004
-        "5511939118320", // Final 8320
-        "5511994687149"  // Final 7149
-      ];
-
-      // 2. Lógica da Roleta Justa (Round-Robin usando a memória do navegador)
-      let ultimoIndice = localStorage.getItem('indiceRoletaZap');
-      
-      // Se for a primeira vez da pessoa, começa no índice 0. Se não, vai pro próximo.
-      if (ultimoIndice === null || isNaN(ultimoIndice)) {
-        ultimoIndice = 0;
-      } else {
-        ultimoIndice = parseInt(ultimoIndice) + 1;
-      }
-
-      // Se a fila passar do limite de números (3), volta pro começo (0)
-      if (ultimoIndice >= numerosEquipe.length) {
-        ultimoIndice = 0;
-      }
-
-      // Salva a vez para o próximo clique desta pessoa
-      localStorage.setItem('indiceRoletaZap', ultimoIndice);
-
-      // 3. Prepara a mensagem e monta o link
-      const mensagemCodificada = encodeURIComponent(mensagem);
-      const numeroEscolhido = numerosEquipe[ultimoIndice];
-      const linkFinal = `https://wa.me/${numeroEscolhido}?text=${mensagemCodificada}`;
-
-      // 4. Avisa o META ADS (Facebook) que gerou um lead
+      // 1. Avisa o META ADS (Facebook) que gerou um lead
       if (typeof fbq !== 'undefined') {
         fbq('track', 'Lead');
       }
 
-      // 5. Avisa o GOOGLE ANALYTICS (GA4) sobre o clique no WhatsApp
+      // 2. Avisa o GOOGLE ANALYTICS (GA4) sobre o clique no WhatsApp
       if (typeof gtag !== 'undefined') {
         gtag('event', 'clique_whatsapp_lp', {
           'event_category': 'Contato',
@@ -323,8 +295,12 @@
         });
       }
 
-      // 6. Abre o WhatsApp (Corrigido para o navegador do Facebook/Insta)
-      window.location.href = linkFinal;
+      // 3. Redireciona pro link da LUMIQ (distribui automaticamente)
+      const mensagemCodificada = encodeURIComponent(mensagem);
+      const linkLumiq = `https://lumiq-smoky.vercel.app/capture/d8ql45?text=${mensagemCodificada}`;
+      
+      // 4. Abre o link (funciona em todos navegadores, incluindo Facebook/Instagram)
+      window.location.href = linkLumiq;
     }
   </script>
 
