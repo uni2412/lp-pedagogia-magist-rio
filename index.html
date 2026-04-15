@@ -47,12 +47,14 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text); line-height: 1.6; }
 
+    /* ── STICKY CTA ── */
     .sticky-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; background: var(--navy); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 -4px 24px rgba(0,0,0,0.18); }
     .sticky-bar p { color: var(--white); font-size: 13px; line-height: 1.4; }
     .sticky-bar strong { color: var(--gold-light); }
     .btn-sticky { flex-shrink: 0; background: var(--green); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; padding: 10px 18px; border-radius: 50px; border: none; cursor: pointer; text-decoration: none; white-space: nowrap; transition: background .2s; }
     .btn-sticky:hover { background: var(--green-dark); }
 
+    /* ── HERO ── */
     .hero { background: var(--navy); padding: 60px 20px 100px; text-align: center; position: relative; overflow: hidden; }
     .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; background: rgba(200,155,60,0.08); pointer-events: none; }
     .hero::after { content: ''; position: absolute; bottom: -80px; left: -40px; width: 240px; height: 240px; border-radius: 50%; background: rgba(200,155,60,0.06); pointer-events: none; }
@@ -64,19 +66,23 @@
     .btn-hero:hover { background: var(--green-dark); transform: translateY(-2px); }
     .hero-sub { margin-top: 14px; color: #6a8fae; font-size: 13px; }
 
+    /* ── SCROLL ANIMADO ── */
     .scroll-down { position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); color: var(--gold-light); animation: bounce 2s infinite; opacity: 0.8; transition: opacity 0.3s; cursor: pointer; }
     .scroll-down:hover { opacity: 1; }
     @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); } 40% { transform: translate(-50%, -12px); } 60% { transform: translate(-50%, -6px); } }
 
+    /* ── URGENCY STRIP ── */
     .urgency { background: #fffbeb; border-top: 3px solid var(--gold); border-bottom: 3px solid var(--gold); padding: 14px 20px; text-align: center; font-size: 14px; color: #78460c; font-weight: 500; }
     .urgency strong { color: #92370a; }
 
+    /* ── CONTAINER & SECTIONS ── */
     .container { max-width: 700px; margin: 0 auto; padding: 0 20px; }
     section { padding: 52px 0; }
     section + section { border-top: 1px solid var(--gray-light); }
     .section-label { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
     .section-title { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: clamp(22px, 4vw, 30px); color: var(--navy); line-height: 1.3; margin-bottom: 20px; }
 
+    /* ── LISTAS E CARDS ── */
     .pain-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
     .pain-list li { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--gray-light); border-radius: var(--radius); padding: 14px 16px; font-size: 14px; line-height: 1.5; }
     .pain-list li .icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
@@ -86,6 +92,7 @@
     .benefit-title { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
     .benefit-desc { font-size: 12px; color: var(--gray-text); line-height: 1.5; }
 
+    /* ── STATS & DEPOIMENTOS ── */
     .stats-row { display: flex; justify-content: space-around; text-align: center; background: var(--navy); border-radius: var(--radius); padding: 28px 16px; gap: 8px; }
     .stat-num { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 30px; color: var(--gold-light); display: block; }
     .stat-label { font-size: 12px; color: #7fa3c0; margin-top: 4px; }
@@ -95,6 +102,7 @@
     .testimonial-author { font-size: 13px; font-weight: 600; color: var(--navy); }
     .testimonial-role { font-size: 12px; color: var(--gray-text); }
 
+    /* ── COMO FUNCIONA E PREÇO ── */
     .steps { display: flex; flex-direction: column; gap: 16px; }
     .step { display: flex; align-items: flex-start; gap: 16px; }
     .step-num { width: 36px; height: 36px; flex-shrink: 0; background: var(--navy); color: var(--gold-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; }
@@ -109,6 +117,7 @@
     .price-option { background: var(--off-white); border: 1px solid var(--gray-light); border-radius: 10px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
     .price-option strong { color: var(--navy); font-size: 16px; }
 
+    /* ── FAQ & CTA FINAL ── */
     .faq-list { display: flex; flex-direction: column; gap: 0; }
     .faq-item { border-bottom: 1px solid var(--gray-light); padding: 18px 0; }
     .faq-item:first-child { border-top: 1px solid var(--gray-light); }
@@ -121,6 +130,7 @@
     .btn-cta:hover { background: var(--green-dark); transform: translateY(-2px); }
     .cta-note { color: #6a8fae; font-size: 12px; margin-top: 12px; }
 
+    /* ── FOOTER & MOBILE ── */
     footer { text-align: center; padding: 32px 20px 90px; font-size: 12px; color: var(--gray-text); }
     footer a { color: var(--gray-text); }
     @media (max-width: 480px) { .benefits-grid { grid-template-columns: 1fr 1fr; } .stats-row { gap: 4px; } .stat-num { font-size: 24px; } .sticky-bar p { display: none; } }
@@ -267,92 +277,17 @@
     <p style="margin-top: 6px;"><a href="https://unisafereducacional.com.br">unisafereducacional.com.br</a> · (11) 99468-7149</p>
   </footer>
 
+  <!-- ✅ CÓDIGO ATUALIZADO COM LUMIQ API -->
   <script>
-    function getSessionId() {
-      let sessionId = sessionStorage.getItem('lumiq_session_id');
-      if (!sessionId) {
-        sessionId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
-        sessionStorage.setItem('lumiq_session_id', sessionId);
-      }
-      return sessionId;
-    }
-
-    async function trackEvent(eventType, extraData = {}) {
-      try {
-        await fetch('https://getlumiq.com.br/api/track-event', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            sessionId: getSessionId(),
-            eventType: eventType,
-            ...extraData
-          })
-        });
-        console.log('✅ Event tracked:', eventType, extraData);
-      } catch (error) {
-        console.error('❌ Error tracking event:', error);
-      }
-    }
-
-    function detectWhatsAppOpen(url, linkSlug, vendorData) {
-      console.log('🚀 Tentando abrir WhatsApp:', url);
-      
-      trackEvent('whatsapp_redirect_attempted', {
-        linkId: linkSlug,
-        ...vendorData
-      });
-
-      window.open(url, '_blank');
-
-      let startTime = Date.now();
-      let wasHidden = false;
-
-      const visibilityHandler = () => {
-        if (document.hidden) {
-          wasHidden = true;
-          const timeToHide = Date.now() - startTime;
-          
-          console.log('⏱️ Página escondeu em:', timeToHide + 'ms');
-          
-          if (timeToHide < 500) {
-            console.log('✅ WhatsApp ABRIU!');
-            trackEvent('whatsapp_opened', {
-              linkId: linkSlug,
-              timeToOpen: timeToHide,
-              ...vendorData
-            });
-          }
-        }
-      };
-
-      document.addEventListener('visibilitychange', visibilityHandler);
-
-      setTimeout(() => {
-        if (!wasHidden) {
-          console.log('❌ WhatsApp NÃO ABRIU (timeout 500ms)');
-          trackEvent('whatsapp_failed', {
-            linkId: linkSlug,
-            ...vendorData
-          });
-        }
-        document.removeEventListener('visibilitychange', visibilityHandler);
-      }, 500);
-    }
-
     async function redirecionarWhatsApp(event, mensagem) {
       event.preventDefault(); 
 
-      console.log('🎯 Botão WhatsApp clicado!');
-
-      trackEvent('button_clicked', {
-        linkId: 'link-qmx3bj',
-        buttonText: mensagem.substring(0, 50)
-      });
-
+      // 1. Avisa o META ADS (Facebook) que gerou um lead
       if (typeof fbq !== 'undefined') {
         fbq('track', 'Lead');
       }
 
+      // 2. Avisa o GOOGLE ANALYTICS (GA4) sobre o clique no WhatsApp
       if (typeof gtag !== 'undefined') {
         gtag('event', 'clique_whatsapp_lp', {
           'event_category': 'Contato',
@@ -360,29 +295,12 @@
         });
       }
 
-      try {
-        console.log('🔄 Buscando próximo vendedor...');
-        
-        const response = await fetch('https://lumiq-smoky.vercel.app/api/link/link-qmx3bj');
-        const data = await response.json();
-        
-        console.log('👤 Vendedor atribuído:', data);
-        
-        const mensagemCodificada = encodeURIComponent(mensagem);
-        const whatsappUrl = `https://wa.me/55${data.number}?text=${mensagemCodificada}`;
-        
-        console.log('📱 URL WhatsApp:', whatsappUrl);
-        
-        detectWhatsAppOpen(whatsappUrl, 'link-qmx3bj', {
-          whatsappNumberId: data.whatsapp_number_id,
-          vendorName: data.name,
-          vendorPhone: data.number
-        });
-        
-      } catch (error) {
-        console.error('❌ Erro ao buscar vendedor:', error);
-        window.open('https://wa.me/5511999999999?text=' + encodeURIComponent(mensagem), '_blank');
-      }
+      // 3. Redireciona pro link da LUMIQ (DIRETO via API - SEM tela de carregamento!)
+      const mensagemCodificada = encodeURIComponent(mensagem);
+      const linkLumiq = `https://getlumiq.com.br/api/link/link-g3ak25`;
+      
+      // 4. Abre o link (funciona em todos navegadores, incluindo Facebook/Instagram)
+      window.location.href = linkLumiq;
     }
   </script>
 
