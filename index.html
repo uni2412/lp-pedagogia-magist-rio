@@ -272,7 +272,7 @@
       let sessionId = sessionStorage.getItem('lumiq_session_id');
       if (!sessionId) {
         sessionId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
-        sessionStorage.getItem('lumiq_session_id', sessionId);
+        sessionStorage.setItem('lumiq_session_id', sessionId);
       }
       return sessionId;
     }
