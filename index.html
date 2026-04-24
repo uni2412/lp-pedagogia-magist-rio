@@ -47,11 +47,160 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text); line-height: 1.6; }
 
+    /* Botão flutuante do WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 1000;
+      background: var(--green);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      animation: pulse 2s infinite;
+    }
+    .whatsapp-float:hover {
+      background: var(--green-dark);
+      transform: scale(1.1);
+    }
+    .whatsapp-float svg {
+      width: 32px;
+      height: 32px;
+      fill: white;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+      50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6); }
+      100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+    }
+
     .sticky-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; background: var(--navy); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 -4px 24px rgba(0,0,0,0.18); }
     .sticky-bar p { color: var(--white); font-size: 13px; line-height: 1.4; }
     .sticky-bar strong { color: var(--gold-light); }
     .btn-sticky { flex-shrink: 0; background: var(--green); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; padding: 10px 18px; border-radius: 50px; border: none; cursor: pointer; text-decoration: none; white-space: nowrap; transition: background .2s; }
     .btn-sticky:hover { background: var(--green-dark); }
+
+    /* Formulário de captura no topo */
+    .lead-form-section {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      padding: 48px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .lead-form-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: rgba(200, 155, 60, 0.1);
+      border-radius: 50%;
+    }
+    .lead-form-container {
+      max-width: 520px;
+      margin: 0 auto;
+      background: white;
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      position: relative;
+    }
+    .lead-form-container h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .lead-form-container p {
+      font-size: 14px;
+      color: var(--gray-text);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .lead-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .form-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid var(--gray-light);
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      transition: border-color 0.3s;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--green);
+    }
+    .form-submit {
+      background: var(--green);
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 8px;
+    }
+    .form-submit:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+    }
+    .form-submit:disabled {
+      background: var(--gray-light);
+      cursor: not-allowed;
+      transform: none;
+    }
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+    .success-message.show {
+      display: block;
+    }
+    .success-message h3 {
+      color: var(--green);
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+    .success-message p {
+      color: var(--gray-text);
+      margin-bottom: 20px;
+    }
+    .whatsapp-redirect-btn {
+      display: inline-block;
+      background: var(--green);
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .whatsapp-redirect-btn:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+    }
 
     .hero { background: var(--navy); padding: 60px 20px 100px; text-align: center; position: relative; overflow: hidden; }
     .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; background: rgba(200,155,60,0.08); pointer-events: none; }
@@ -123,22 +272,65 @@
 
     footer { text-align: center; padding: 32px 20px 90px; font-size: 12px; color: var(--gray-text); }
     footer a { color: var(--gray-text); }
-    @media (max-width: 480px) { .benefits-grid { grid-template-columns: 1fr 1fr; } .stats-row { gap: 4px; } .stat-num { font-size: 24px; } .sticky-bar p { display: none; } }
+    @media (max-width: 480px) { 
+      .benefits-grid { grid-template-columns: 1fr 1fr; } 
+      .stats-row { gap: 4px; } 
+      .stat-num { font-size: 24px; } 
+      .sticky-bar p { display: none; }
+      .whatsapp-float { width: 56px; height: 56px; }
+      .whatsapp-float svg { width: 28px; height: 28px; }
+    }
   </style>
 </head>
 <body>
 
+  <!-- Botão flutuante do WhatsApp -->
+  <a href="#" onclick="redirecionarWhatsApp(event, 'Olá, vim do site e quero saber mais sobre Pedagogia para Magistério!')" class="whatsapp-float" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 0C7.164 0 0 7.164 0 16c0 2.825.738 5.48 2.025 7.781L.05 31.95l8.35-2.019A15.904 15.904 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.333c-2.447 0-4.743-.661-6.719-1.814l-.481-.288-4.994 1.206 1.331-4.863-.316-.5A13.246 13.246 0 012.667 16c0-7.364 5.97-13.333 13.333-13.333S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.305-9.971c-.4-.2-2.369-1.169-2.738-1.303-.369-.131-.637-.2-.906.2-.269.4-1.044 1.303-1.281 1.569-.238.269-.475.3-.875.1-.4-.2-1.688-.622-3.213-1.984-1.188-1.059-1.991-2.366-2.225-2.766-.234-.4-.025-.616.175-.816.179-.179.4-.469.6-.703.2-.234.269-.4.4-.669.131-.269.066-.503-.034-.703-.1-.2-.906-2.184-1.244-2.991-.328-.788-.663-.681-.906-.694-.234-.012-.503-.015-.772-.015s-.706.1-1.075.503c-.369.4-1.409 1.378-1.409 3.359s1.444 3.897 1.644 4.166c.2.269 2.831 4.322 6.859 6.062.959.416 1.709.663 2.294.85.688.225 1.313.194 1.806.116.553-.084 2.369-.969 2.703-1.903.334-.934.334-1.734.234-1.903-.1-.169-.369-.269-.769-.469z"/>
+    </svg>
+  </a>
+
   <div class="sticky-bar">
     <p><strong>⚠️ Próxima turma: 20/04</strong> — vagas limitadas!</p>
-    <a href="#" onclick="redirecionarWhatsApp(event, 'Olá, vim da campanha e quero garantir minha vaga no curso de Pedagogia para Magistério!')" class="btn-sticky">Garantir minha vaga</a>
+    <a href="#form-topo" class="btn-sticky">Preencher formulário</a>
   </div>
+
+  <!-- Seção do Formulário de Captura -->
+  <section class="lead-form-section" id="form-topo">
+    <div class="lead-form-container">
+      <div id="formContainer">
+        <h2>📋 Garanta sua vaga agora!</h2>
+        <p>Preencha abaixo e fale direto com um especialista no WhatsApp</p>
+        <form id="leadForm" class="lead-form">
+          <input type="hidden" name="access_key" value="SUA_CHAVE_WEB3FORMS_AQUI">
+          <input type="text" name="nome" class="form-input" placeholder="Nome completo" required>
+          <input type="email" name="email" class="form-input" placeholder="Seu melhor e-mail" required>
+          <input type="tel" name="whatsapp" class="form-input" placeholder="WhatsApp (com DDD)" required pattern="[0-9]{10,11}">
+          <input type="hidden" name="origem" value="LP Pedagogia Magistério">
+          <input type="hidden" name="redirect" value="false">
+          <button type="submit" class="form-submit" id="submitBtn">
+            Falar com especialista no WhatsApp →
+          </button>
+        </form>
+      </div>
+
+      <div id="successMessage" class="success-message">
+        <h3>✅ Dados enviados com sucesso!</h3>
+        <p>Clique no botão abaixo para falar diretamente com nosso especialista no WhatsApp:</p>
+        <a href="#" id="whatsappRedirectBtn" class="whatsapp-redirect-btn">
+          💬 Abrir WhatsApp agora
+        </a>
+      </div>
+    </div>
+  </section>
 
   <section class="hero">
     <div class="container">
       <div class="hero-badge">⚠️ Próxima turma: 20 de abril — vagas limitadas</div>
       <h1>Você tem o magistério e ainda não <em>possui Pedagogia?</em></h1>
       <p>Obtenha seu diploma de Pedagogia em 18 meses, de forma semipresencial e reconhecido pelo MEC — e abra as portas para concursos públicos e novas oportunidades na educação.</p>
-      <a href="#" onclick="redirecionarWhatsApp(event, 'Olá, vim da campanha e quero garantir minha vaga no curso de Pedagogia para Magistério!')" class="btn-hero">Quero garantir minha vaga no WhatsApp</a>
+      <a href="#form-topo" class="btn-hero">Preencher formulário acima</a>
       <p class="hero-sub">Fale agora com um especialista — sem compromisso</p>
     </div>
     <a href="#proxima-secao" class="scroll-down" aria-label="Rolar para baixo">
@@ -231,7 +423,7 @@
           <div class="price-option"><span>12x no cartão</span><strong>R$ 280/mês</strong></div>
           <div class="price-option"><span>À vista</span><strong>10% de desconto</strong></div>
         </div>
-        <a href="#" onclick="redirecionarWhatsApp(event, 'Olá, vim do site e quero a condição exclusiva')" class="btn-cta" style="margin-top: 24px; display: inline-block;">Clique aqui e garanta uma promoção exclusiva</a>
+        <a href="#form-topo" class="btn-cta" style="margin-top: 24px; display: inline-block;">Preencher formulário e garantir promoção</a>
       </div>
       <p style="font-size: 12px; color: var(--gray-text); text-align: center;">* Os valores podem sofrer alterações sem aviso prévio. Promoções e descontos não cumulativos.</p>
     </div>
@@ -256,7 +448,7 @@
       <div class="cta-final">
         <h2>Dê o próximo passo na sua carreira hoje</h2>
         <p>Fale agora com um especialista da Unisafer, tire todas as suas dúvidas e garanta sua vaga na próxima turma — sem compromisso.</p>
-        <a href="#" onclick="redirecionarWhatsApp(event, 'Olá, vim da campanha e quero garantir minha vaga no curso de Pedagogia para Magistério!')" class="btn-cta">Falar com especialista no WhatsApp</a>
+        <a href="#form-topo" class="btn-cta">Preencher formulário acima</a>
         <p class="cta-note">Atendimento de seg a sex, das 9h às 18h</p>
       </div>
     </div>
@@ -294,6 +486,7 @@
       }
     }
 
+    // Função para redirecionar WhatsApp (botão flutuante)
     async function redirecionarWhatsApp(event, mensagem) {
       event.preventDefault();
       console.log('🎯 Botão WhatsApp clicado!');
@@ -314,48 +507,114 @@
         });
       }
 
-      trackEvent('whatsapp_redirect_attempted', {
-        linkId: 'link-g3ak25'
-      });
-
       const mensagemCodificada = encodeURIComponent(mensagem);
       const linkLumiq = `https://getlumiq.com.br/api/link/link-g3ak25?text=${mensagemCodificada}`;
       
       console.log('📱 Abrindo link Lumiq:', linkLumiq);
       window.open(linkLumiq, '_blank');
+    }
 
-      let startTime = Date.now();
-      let wasHidden = false;
+    // Manipulação do formulário
+    document.getElementById('leadForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const formContainer = document.getElementById('formContainer');
+      const successMessage = document.getElementById('successMessage');
+      
+      // Desabilita o botão
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+      
+      // Coleta os dados do formulário
+      const formData = new FormData(this);
+      const nome = formData.get('nome');
+      const whatsapp = formData.get('whatsapp');
+      
+      try {
+        // Envia para Web3Forms
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+          console.log('✅ Formulário enviado com sucesso!');
+          
+          // Dispara evento Lead pro Facebook Pixel
+          if (typeof fbq !== 'undefined') {
+            fbq('track', 'Lead', {
+              content_name: 'Pedagogia Magistério',
+              content_category: 'Lead Form',
+              value: 249.00,
+              currency: 'BRL'
+            });
+            console.log('✅ Facebook Pixel - Lead disparado!');
+          }
+          
+          // Google Analytics
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'generate_lead', {
+              'event_category': 'Lead',
+              'event_label': 'Formulario_Pedagogia'
+            });
+          }
+          
+          // Tracking interno
+          trackEvent('lead_form_submitted', {
+            formId: 'leadForm',
+            course: 'Pedagogia Magistério'
+          });
+          
+          // Esconde formulário e mostra mensagem de sucesso
+          formContainer.style.display = 'none';
+          successMessage.classList.add('show');
+          
+          // Prepara link do WhatsApp com dados do lead
+          const mensagemWhatsApp = `Olá! Meu nome é ${nome}, preenchi o formulário e quero saber mais sobre Pedagogia para Magistério. Meu WhatsApp: ${whatsapp}`;
+          const mensagemCodificada = encodeURIComponent(mensagemWhatsApp);
+          const linkWhatsApp = `https://getlumiq.com.br/api/link/link-g3ak25?text=${mensagemCodificada}`;
+          
+          // Atualiza o botão de WhatsApp
+          document.getElementById('whatsappRedirectBtn').href = linkWhatsApp;
+          document.getElementById('whatsappRedirectBtn').onclick = function(e) {
+            e.preventDefault();
+            window.open(linkWhatsApp, '_blank');
+            trackEvent('whatsapp_redirect_after_form', {
+              linkId: 'link-g3ak25'
+            });
+          };
+          
+        } else {
+          throw new Error('Erro no envio do formulário');
+        }
+        
+      } catch (error) {
+        console.error('❌ Erro ao enviar formulário:', error);
+        alert('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Falar com especialista no WhatsApp →';
+      }
+    });
 
-      const visibilityHandler = () => {
-        if (document.hidden) {
-          wasHidden = true;
-          const timeToHide = Date.now() - startTime;
-          
-          console.log('⏱️ Página escondeu em:', timeToHide + 'ms');
-          
-          if (timeToHide < 500) {
-            console.log('✅ WhatsApp ABRIU!');
-            trackEvent('whatsapp_opened', {
-              linkId: 'link-g3ak25',
-              timeToOpen: timeToHide
+    // Smooth scroll para âncoras
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && !this.hasAttribute('onclick')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
             });
           }
         }
-      };
-
-      document.addEventListener('visibilitychange', visibilityHandler);
-
-      setTimeout(() => {
-        if (!wasHidden) {
-          console.log('❌ WhatsApp NÃO ABRIU (timeout 500ms)');
-          trackEvent('whatsapp_failed', {
-            linkId: 'link-g3ak25'
-          });
-        }
-        document.removeEventListener('visibilitychange', visibilityHandler);
-      }, 500);
-    }
+      });
+    });
   </script>
 
 </body>
