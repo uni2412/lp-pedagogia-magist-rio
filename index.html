@@ -47,11 +47,11 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text); line-height: 1.6; }
 
-    /* Botão flutuante do WhatsApp */
+    /* Botão flutuante do WhatsApp - AGORA À DIREITA */
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
-      left: 20px;
+      right: 20px;
       z-index: 1000;
       background: var(--green);
       width: 60px;
@@ -81,30 +81,108 @@
       100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
     }
 
-    .sticky-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; background: var(--navy); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 -4px 24px rgba(0,0,0,0.18); }
-    .sticky-bar p { color: var(--white); font-size: 13px; line-height: 1.4; }
-    .sticky-bar strong { color: var(--gold-light); }
-    .btn-sticky { flex-shrink: 0; background: var(--green); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; padding: 10px 18px; border-radius: 50px; border: none; cursor: pointer; text-decoration: none; white-space: nowrap; transition: background .2s; }
-    .btn-sticky:hover { background: var(--green-dark); }
-
-    /* Formulário de captura - AGORA APÓS O HERO */
-    .lead-form-section {
-      background: var(--off-white);
-      padding: 0 20px 52px;
-      margin-top: -50px;
+    /* Hero + Form lado a lado */
+    .hero-form-wrapper {
+      background: var(--navy);
+      padding: 60px 20px 80px;
       position: relative;
-      z-index: 10;
+      overflow: hidden;
     }
-    .lead-form-container {
-      max-width: 580px;
+    .hero-form-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(200,155,60,0.08);
+      pointer-events: none;
+    }
+    
+    .hero-form-container {
+      max-width: 1200px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Hero Content (lado esquerdo) */
+    .hero-content {
+      text-align: left;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(200,155,60,0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+    }
+    .hero-content h1 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      color: var(--white);
+      font-size: clamp(28px, 5vw, 42px);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero-content h1 em {
+      color: var(--gold-light);
+      font-style: normal;
+    }
+    .hero-content p {
+      color: #a8c0d8;
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .btn-hero {
+      display: inline-block;
+      background: var(--green);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 16px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+      box-shadow: 0 8px 32px rgba(37,211,102,0.3);
+    }
+    .btn-hero:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+    }
+    .hero-sub {
+      margin-top: 14px;
+      color: #6a8fae;
+      font-size: 13px;
+    }
+
+    /* Formulário (lado direito) */
+    .lead-form-card {
       background: white;
       border-radius: var(--radius);
       padding: 32px 28px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
       border: 2px solid var(--green);
     }
-    .lead-form-container h2 {
+    .form-icon {
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .lead-form-card h2 {
       font-size: 22px;
       font-weight: 700;
       color: var(--navy);
@@ -112,7 +190,7 @@
       text-align: center;
       line-height: 1.3;
     }
-    .lead-form-container p {
+    .lead-form-card p {
       font-size: 14px;
       color: var(--gray-text);
       text-align: center;
@@ -193,20 +271,24 @@
       transform: translateY(-2px);
     }
 
-    .hero { background: var(--navy); padding: 60px 20px 100px; text-align: center; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; background: rgba(200,155,60,0.08); pointer-events: none; }
-    .hero::after { content: ''; position: absolute; bottom: -80px; left: -40px; width: 240px; height: 240px; border-radius: 50%; background: rgba(200,155,60,0.06); pointer-events: none; }
-    .hero-badge { display: inline-block; background: rgba(200,155,60,0.15); border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 5px 16px; border-radius: 50px; margin-bottom: 24px; }
-    .hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 700; color: var(--white); font-size: clamp(26px, 5vw, 40px); line-height: 1.25; max-width: 640px; margin: 0 auto 20px; }
-    .hero h1 em { color: var(--gold-light); font-style: normal; }
-    .hero p { color: #a8c0d8; font-size: 16px; max-width: 520px; margin: 0 auto 32px; line-height: 1.7; }
-    .btn-hero { display: inline-block; background: var(--green); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 17px; font-weight: 600; padding: 16px 36px; border-radius: 50px; text-decoration: none; transition: background .2s, transform .15s; box-shadow: 0 8px 32px rgba(37,211,102,0.3); }
-    .btn-hero:hover { background: var(--green-dark); transform: translateY(-2px); }
-    .hero-sub { margin-top: 14px; color: #6a8fae; font-size: 13px; }
-
-    .scroll-down { position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); color: var(--gold-light); animation: bounce 2s infinite; opacity: 0.8; transition: opacity 0.3s; cursor: pointer; }
-    .scroll-down:hover { opacity: 1; }
-    @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); } 40% { transform: translate(-50%, -12px); } 60% { transform: translate(-50%, -6px); } }
+    /* Responsivo */
+    @media (max-width: 968px) {
+      .hero-form-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .hero-content {
+        text-align: center;
+      }
+      .whatsapp-float {
+        width: 56px;
+        height: 56px;
+      }
+      .whatsapp-float svg {
+        width: 28px;
+        height: 28px;
+      }
+    }
 
     .urgency { background: #fffbeb; border-top: 3px solid var(--gold); border-bottom: 3px solid var(--gold); padding: 14px 20px; text-align: center; font-size: 14px; color: #78460c; font-weight: 500; }
     .urgency strong { color: #92370a; }
@@ -261,73 +343,59 @@
     .btn-cta:hover { background: var(--green-dark); transform: translateY(-2px); }
     .cta-note { color: #6a8fae; font-size: 12px; margin-top: 12px; }
 
-    footer { text-align: center; padding: 32px 20px 90px; font-size: 12px; color: var(--gray-text); }
+    footer { text-align: center; padding: 32px 20px 40px; font-size: 12px; color: var(--gray-text); }
     footer a { color: var(--gray-text); }
-    @media (max-width: 480px) { 
-      .benefits-grid { grid-template-columns: 1fr 1fr; } 
-      .stats-row { gap: 4px; } 
-      .stat-num { font-size: 24px; } 
-      .sticky-bar p { display: none; }
-      .whatsapp-float { width: 56px; height: 56px; }
-      .whatsapp-float svg { width: 28px; height: 28px; }
-    }
   </style>
 </head>
 <body>
 
-  <!-- Botão flutuante do WhatsApp -->
+  <!-- Botão flutuante do WhatsApp - AGORA À DIREITA -->
   <a href="#" onclick="redirecionarWhatsApp(event, 'Olá, vim do site e quero saber mais sobre Pedagogia para Magistério!')" class="whatsapp-float" aria-label="Falar no WhatsApp">
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
       <path d="M16 0C7.164 0 0 7.164 0 16c0 2.825.738 5.48 2.025 7.781L.05 31.95l8.35-2.019A15.904 15.904 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.333c-2.447 0-4.743-.661-6.719-1.814l-.481-.288-4.994 1.206 1.331-4.863-.316-.5A13.246 13.246 0 012.667 16c0-7.364 5.97-13.333 13.333-13.333S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.305-9.971c-.4-.2-2.369-1.169-2.738-1.303-.369-.131-.637-.2-.906.2-.269.4-1.044 1.303-1.281 1.569-.238.269-.475.3-.875.1-.4-.2-1.688-.622-3.213-1.984-1.188-1.059-1.991-2.366-2.225-2.766-.234-.4-.025-.616.175-.816.179-.179.4-.469.6-.703.2-.234.269-.4.4-.669.131-.269.066-.503-.034-.703-.1-.2-.906-2.184-1.244-2.991-.328-.788-.663-.681-.906-.694-.234-.012-.503-.015-.772-.015s-.706.1-1.075.503c-.369.4-1.409 1.378-1.409 3.359s1.444 3.897 1.644 4.166c.2.269 2.831 4.322 6.859 6.062.959.416 1.709.663 2.294.85.688.225 1.313.194 1.806.116.553-.084 2.369-.969 2.703-1.903.334-.934.334-1.734.234-1.903-.1-.169-.369-.269-.769-.469z"/>
     </svg>
   </a>
 
-  <div class="sticky-bar">
-    <p><strong>⚠️ Próxima turma: 20/04</strong> — vagas limitadas!</p>
-    <a href="#form-topo" class="btn-sticky">Preencher formulário</a>
-  </div>
-
-  <section class="hero">
-    <div class="container">
-      <div class="hero-badge">⚠️ Próxima turma: 20 de abril — vagas limitadas</div>
-      <h1>Você tem o magistério e ainda não <em>possui Pedagogia?</em></h1>
-      <p>Obtenha seu diploma de Pedagogia em 18 meses, de forma semipresencial e reconhecido pelo MEC — e abra as portas para concursos públicos e novas oportunidades na educação.</p>
-      <a href="#form-topo" class="btn-hero">Preencher formulário acima</a>
-      <p class="hero-sub">Fale agora com um especialista — sem compromisso</p>
-    </div>
-    <a href="#form-topo" class="scroll-down" aria-label="Rolar para o formulário">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
-    </a>
-  </section>
-
-  <!-- Seção do Formulário de Captura - AGORA AQUI EMBAIXO DO HERO -->
-  <section class="lead-form-section" id="form-topo">
-    <div class="lead-form-container">
-      <div id="formContainer">
-        <h2>📋 Garanta sua vaga agora!</h2>
-        <p>Preencha abaixo e fale direto com um especialista no WhatsApp</p>
-        <form id="leadForm" class="lead-form">
-          <input type="hidden" name="access_key" value="7602cf56-3c0f-48d2-baa5-3318ca461ffe">
-          <input type="text" name="nome" class="form-input" placeholder="Nome completo" required>
-          <input type="email" name="email" class="form-input" placeholder="Seu melhor e-mail" required>
-          <input type="tel" name="whatsapp" class="form-input" placeholder="WhatsApp (com DDD)" required pattern="[0-9]{10,11}">
-          <input type="hidden" name="origem" value="LP Pedagogia Magistério">
-          <input type="hidden" name="redirect" value="false">
-          <button type="submit" class="form-submit" id="submitBtn">
-            Falar com especialista no WhatsApp →
-          </button>
-        </form>
+  <!-- Hero + Formulário lado a lado -->
+  <section class="hero-form-wrapper">
+    <div class="hero-form-container">
+      
+      <!-- HERO CONTENT (esquerda) -->
+      <div class="hero-content">
+        <div class="hero-badge">⚠️ Próxima turma: 20 de abril — vagas limitadas</div>
+        <h1>Você tem o magistério e ainda não <em>possui Pedagogia?</em></h1>
+        <p>Obtenha seu diploma de Pedagogia em 18 meses, de forma semipresencial e reconhecido pelo MEC — e abra as portas para concursos públicos e novas oportunidades na educação.</p>
+        <p class="hero-sub">Fale agora com um especialista — sem compromisso</p>
       </div>
 
-      <div id="successMessage" class="success-message">
-        <h3>✅ Dados enviados com sucesso!</h3>
-        <p>Clique no botão abaixo para falar diretamente com nosso especialista no WhatsApp:</p>
-        <a href="#" id="whatsappRedirectBtn" class="whatsapp-redirect-btn">
-          💬 Abrir WhatsApp agora
-        </a>
+      <!-- FORMULÁRIO (direita) -->
+      <div class="lead-form-card">
+        <div id="formContainer">
+          <div class="form-icon">📋</div>
+          <h2>Garanta sua vaga agora!</h2>
+          <p>Preencha abaixo e fale direto com um especialista no WhatsApp</p>
+          <form id="leadForm" class="lead-form">
+            <input type="hidden" name="access_key" value="7602cf56-3c0f-48d2-baa5-3318ca461ffe">
+            <input type="text" name="nome" class="form-input" placeholder="Nome completo" required>
+            <input type="email" name="email" class="form-input" placeholder="Seu melhor e-mail" required>
+            <input type="tel" name="whatsapp" class="form-input" placeholder="WhatsApp (com DDD)" required pattern="[0-9]{10,11}">
+            <input type="hidden" name="origem" value="LP Pedagogia Magistério">
+            <input type="hidden" name="redirect" value="false">
+            <button type="submit" class="form-submit" id="submitBtn">
+              Falar com especialista no WhatsApp →
+            </button>
+          </form>
+        </div>
+
+        <div id="successMessage" class="success-message">
+          <h3>✅ Dados enviados com sucesso!</h3>
+          <p>Clique no botão abaixo para falar diretamente com nosso especialista no WhatsApp:</p>
+          <a href="#" id="whatsappRedirectBtn" class="whatsapp-redirect-btn">
+            💬 Abrir WhatsApp agora
+          </a>
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -414,7 +482,7 @@
           <div class="price-option"><span>12x no cartão</span><strong>R$ 280/mês</strong></div>
           <div class="price-option"><span>À vista</span><strong>10% de desconto</strong></div>
         </div>
-        <a href="#form-topo" class="btn-cta" style="margin-top: 24px; display: inline-block;">Preencher formulário e garantir promoção</a>
+        <a href="#" onclick="redirecionarWhatsApp(event, 'Olá, vim do site e quero a condição exclusiva')" class="btn-cta" style="margin-top: 24px; display: inline-block;">Falar no WhatsApp e garantir promoção</a>
       </div>
       <p style="font-size: 12px; color: var(--gray-text); text-align: center;">* Os valores podem sofrer alterações sem aviso prévio. Promoções e descontos não cumulativos.</p>
     </div>
@@ -439,7 +507,7 @@
       <div class="cta-final">
         <h2>Dê o próximo passo na sua carreira hoje</h2>
         <p>Fale agora com um especialista da Unisafer, tire todas as suas dúvidas e garanta sua vaga na próxima turma — sem compromisso.</p>
-        <a href="#form-topo" class="btn-cta">Preencher formulário acima</a>
+        <a href="#" onclick="redirecionarWhatsApp(event, 'Olá, vim da campanha e quero garantir minha vaga no curso de Pedagogia para Magistério!')" class="btn-cta">Falar com especialista no WhatsApp</a>
         <p class="cta-note">Atendimento de seg a sex, das 9h às 18h</p>
       </div>
     </div>
@@ -588,23 +656,6 @@
         submitBtn.disabled = false;
         submitBtn.textContent = 'Falar com especialista no WhatsApp →';
       }
-    });
-
-    // Smooth scroll para âncoras
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#' && !this.hasAttribute('onclick')) {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        }
-      });
     });
   </script>
 
