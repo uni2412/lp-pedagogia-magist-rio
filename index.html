@@ -237,39 +237,6 @@
       cursor: not-allowed;
       transform: none;
     }
-    .success-message {
-      display: none;
-      text-align: center;
-      padding: 20px;
-    }
-    .success-message.show {
-      display: block;
-    }
-    .success-message h3 {
-      color: var(--green);
-      font-size: 24px;
-      margin-bottom: 12px;
-    }
-    .success-message p {
-      color: var(--gray-text);
-      margin-bottom: 20px;
-    }
-    .whatsapp-redirect-btn {
-      display: inline-block;
-      background: var(--green);
-      color: white;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      padding: 16px 32px;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-    .whatsapp-redirect-btn:hover {
-      background: var(--green-dark);
-      transform: translateY(-2px);
-    }
 
     /* Responsivo */
     @media (max-width: 968px) {
@@ -385,14 +352,6 @@
               Falar com especialista no WhatsApp →
             </button>
           </form>
-        </div>
-
-        <div id="successMessage" class="success-message">
-          <h3>✅ Dados enviados com sucesso!</h3>
-          <p>Clique no botão abaixo para falar diretamente com nosso especialista no WhatsApp:</p>
-          <a href="#" id="whatsappRedirectBtn" class="whatsapp-redirect-btn">
-            💬 Abrir WhatsApp agora
-          </a>
         </div>
       </div>
 
@@ -570,16 +529,14 @@
       const linkLumiq = `https://getlumiq.com.br/api/link/link-g3ak25?text=${mensagemCodificada}`;
       
       console.log('📱 Abrindo link Lumiq:', linkLumiq);
-      window.open(linkLumiq, '_blank');
+      window.location.href = linkLumiq;
     }
 
-    // Manipulação do formulário
+    // Manipulação do formulário - REDIRECIONAMENTO AUTOMÁTICO
     document.getElementById('leadForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       
       const submitBtn = document.getElementById('submitBtn');
-      const formContainer = document.getElementById('formContainer');
-      const successMessage = document.getElementById('successMessage');
       
       // Desabilita o botão
       submitBtn.disabled = true;
@@ -627,24 +584,14 @@
             course: 'Pedagogia Magistério'
           });
           
-          // Esconde formulário e mostra mensagem de sucesso
-          formContainer.style.display = 'none';
-          successMessage.classList.add('show');
-          
-          // Prepara link do WhatsApp com dados do lead
+          // Prepara mensagem do WhatsApp com dados do lead
           const mensagemWhatsApp = `Olá! Meu nome é ${nome}, preenchi o formulário e quero saber mais sobre Pedagogia para Magistério. Meu WhatsApp: ${whatsapp}`;
           const mensagemCodificada = encodeURIComponent(mensagemWhatsApp);
           const linkWhatsApp = `https://getlumiq.com.br/api/link/link-g3ak25?text=${mensagemCodificada}`;
           
-          // Atualiza o botão de WhatsApp
-          document.getElementById('whatsappRedirectBtn').href = linkWhatsApp;
-          document.getElementById('whatsappRedirectBtn').onclick = function(e) {
-            e.preventDefault();
-            window.open(linkWhatsApp, '_blank');
-            trackEvent('whatsapp_redirect_after_form', {
-              linkId: 'link-g3ak25'
-            });
-          };
+          // REDIRECIONA AUTOMATICAMENTE PARA O WHATSAPP
+          console.log('📱 Redirecionando automaticamente para WhatsApp...');
+          window.location.href = linkWhatsApp;
           
         } else {
           throw new Error('Erro no envio do formulário');
