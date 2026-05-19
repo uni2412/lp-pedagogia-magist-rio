@@ -497,7 +497,7 @@
     async function enviarParaCRM(nome, email, whatsapp) {
       try {
         console.log('📤 Enviando para CRM via API Vercel...');
-        const response = await fetch('https://unisafer-crm.vercel.app/api/webhook-lead', {
+        const resconst response = await fetch('https://unisafer-webhook-api.vercel.app/api/webhook-lead', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
