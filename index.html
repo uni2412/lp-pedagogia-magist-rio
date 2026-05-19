@@ -451,7 +451,7 @@
     <p style="margin-top: 6px;"><a href="https://unisafereducacional.com.br">unisafereducacional.com.br</a> · (11) 99468-7149</p>
   </footer>
 
-  <!-- ===== INTEGRAÇÃO CRM UNISAFER VIA API VERCEL ===== -->
+  <!-- ===== INTEGRAÇÃO CRM UNISAFER ===== -->
   <script>
     function getSessionId() {
       let sessionId = sessionStorage.getItem('lumiq_session_id');
@@ -496,8 +496,8 @@
 
     async function enviarParaCRM(nome, email, whatsapp) {
       try {
-        console.log('📤 Enviando para CRM via API Vercel...');
-        const resconst response = await fetch('https://unisafer-webhook-api.vercel.app/api/webhook-lead', {
+        console.log('📤 Enviando para CRM...');
+        const response = await fetch('https://unisafer-webhook-api.vercel.app/api/webhook-lead', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -514,6 +514,7 @@
           console.log('✅ Lead salvo no CRM!');
           return true;
         }
+        console.error('❌ Erro CRM:', result);
         return false;
       } catch (error) {
         console.error('❌ Erro CRM:', error);
@@ -566,6 +567,7 @@
         window.location.href = `https://getlumiq.com.br/api/link/link-g3ak25?text=${encodeURIComponent(msg)}`;
         
       } catch (error) {
+        console.error('❌ Erro:', error);
         alert('Erro ao enviar. Tente novamente.');
         submitBtn.disabled = false;
         submitBtn.textContent = 'Falar com especialista no WhatsApp →';
