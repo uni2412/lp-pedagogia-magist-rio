@@ -575,8 +575,8 @@
           <p>Preencha abaixo e fale direto com um especialista no WhatsApp</p>
           <form id="leadForm" class="lead-form">
             <input type="hidden" name="access_key" value="7602cf56-3c0f-48d2-baa5-3318ca461ffe">
+            <input type="hidden" name="redirect"   value="false">
             <input type="hidden" name="origem"     value="LP Pedagogia Magistério">
-            <input type="checkbox" name="botcheck" style="display:none">
             <div class="input-wrapper">
               <span class="input-icon">👤</span>
               <input type="text"  name="nome"     id="nome"     class="form-input" placeholder="Nome completo" required>
@@ -836,24 +836,22 @@
 
       /* ── 1. E-MAIL via Web3Forms (falha isolada — não bloqueia CRM) ── */
       try {
-        var web3body = {
-          access_key:      '7602cf56-3c0f-48d2-baa5-3318ca461ffe',
-          subject:         'Novo lead – Pedagogia para Magistério: ' + nome,
-          from_name:       'LP Magistério – Unisafer',
-          botcheck:        '',
-          name:            nome,
-          email:           email,
-          phone:           whatsapp,
-          course_interest: 'Pedagogia para Magistério',
-          message:         'Lead vindo da LP de Pedagogia para Magistério',
-          origem:          'LP Pedagogia Magistério'
-        };
+        var fd = new FormData();
+        fd.set('access_key',      '7602cf56-3c0f-48d2-baa5-3318ca461ffe');
+        fd.set('redirect',        'false');
+        fd.set('subject',         'Novo lead – Pedagogia para Magistério: ' + nome);
+        fd.set('from_name',       'LP Magistério – Unisafer');
+        fd.set('name',            nome);
+        fd.set('email',           email);
+        fd.set('phone',           whatsapp);
+        fd.set('course_interest', 'Pedagogia para Magistério');
+        fd.set('message',         'Lead vindo da LP de Pedagogia para Magistério');
+        fd.set('origem',          'LP Pedagogia Magistério');
 
-        console.info('[LP] Enviando e-mail para Web3Forms', web3body);
+        console.info('[LP] Enviando e-mail para Web3Forms');
         var emailResp = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(web3body)
+          body: fd
         });
         var emailData = await emailResp.json();
         console.info('[LP] Resposta Web3Forms', emailData);
