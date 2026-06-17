@@ -787,11 +787,11 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-      if (!resp.ok) throw new Error('CRM ' + resp.status);
+      if (!resp.ok) throw new Error('CRM HTTP ' + resp.status);
       return resp.json();
     }
 
-    /* Botões de WhatsApp (sem formulário) */
+    /* Botões de WhatsApp (sem formulário) — não alterar */
     async function redirecionarWhatsApp() {
       if (window.dataLayer) {
         window.dataLayer.push({ event: 'whatsapp_click', source: 'lp_magisterio_whatsapp' });
@@ -816,92 +816,111 @@
           window.open(result.whatsapp_url, '_blank');
         }
       } catch (err) {
-        console.warn('CRM indisponível:', err);
+        console.warn('[LP] CRM indisponível (botão WhatsApp):', err);
       }
     }
 
-    /* Formulário */
+    /* Formulário principal */
     document.getElementById('leadForm').addEventListener('submit', async function(e) {
       e.preventDefault();
+
       var btn = document.getElementById('submitBtn');
       btn.disabled = true;
       btn.textContent = 'Enviando...';
 
-      var formData = new FormData(this);
-      var nome     = formData.get('nome');
-      var email    = formData.get('email');
-      var whatsapp = formData.get('whatsapp');
+      var nome     = document.getElementById('nome').value.trim();
+      var email    = document.getElementById('email').value.trim();
+      var whatsapp = document.getElementById('whatsapp').value.trim();
 
-      /* Campos extras para melhorar identificação do e-mail */
-      formData.set('subject', 'Novo lead – Pedagogia para Magistério: ' + nome);
-      formData.set('from_name', 'LP Magistério – Unisafer');
+      console.info('[LP] Submit capturado', { nome: nome, email: email });
 
+      /* ── 1. E-MAIL via Web3Forms (falha isolada — não bloqueia CRM) ── */
       try {
-        /* 1. E-mail via Web3Forms */
+        var fd = new FormData();
+        fd.set('access_key',      '7602cf56-3c0f-48d2-baa5-3318ca461ffe');
+        fd.set('redirect',        'false');
+        fd.set('subject',         'Novo lead – Pedagogia para Magistério: ' + nome);
+        fd.set('from_name',       'LP Magistério – Unisafer');
+        fd.set('name',            nome);
+        fd.set('email',           email);
+        fd.set('phone',           whatsapp);
+        fd.set('course_interest', 'Pedagogia para Magistério');
+        fd.set('message',         'Lead vindo da LP de Pedagogia para Magistério');
+        fd.set('origem',          'LP Pedagogia Magistério');
+
+        console.info('[LP] Enviando e-mail para Web3Forms');
         var emailResp = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          body: formData
+          body: fd
         });
         var emailData = await emailResp.json();
+        console.info('[LP] Resposta Web3Forms', emailData);
         if (!emailData.success) {
-          console.warn('Web3Forms error:', emailData.message);
+          console.warn('[LP] Web3Forms nao enviou:', emailData.message);
         }
+      } catch (emailErr) {
+        console.error('[LP] Erro Web3Forms', emailErr);
+      }
 
-        /* 2. CRM Unisafer → obtém whatsapp_url e dados do vendedor */
-        var whatsappUrl    = null;
-        var sellerName     = null;
-        var sellerWhatsapp = null;
-        try {
-          var crmResult = await chamarCRM({
-            name:            nome,
-            email:           email,
-            phone:           whatsapp,
-            source:          'lp_magisterio',
-            course_interest: 'Pedagogia para Magistério',
-            landing_page:    window.location.href,
-            page:            window.location.pathname,
-            message:         'Lead vindo da LP de Pedagogia para Magistério'
-          });
-          if (crmResult) {
-            whatsappUrl    = crmResult.whatsapp_url             || null;
-            sellerName     = crmResult.assigned_seller_name     || null;
-            sellerWhatsapp = crmResult.assigned_seller_whatsapp || null;
-          }
-        } catch (crmErr) {
-          console.warn('CRM error:', crmErr);
-        }
+      /* ── 2. CRM Unisafer — obtém whatsapp_url ── */
+      var crmPayload = {
+        name:            nome,
+        email:           email,
+        phone:           whatsapp,
+        source:          'lp_magisterio',
+        course_interest: 'Pedagogia para Magistério',
+        landing_page:    window.location.href,
+        page:            window.location.pathname,
+        message:         'Lead vindo da LP de Pedagogia para Magistério'
+      };
 
-        /* 3. Tracking */
-        if (window.dataLayer) {
-          window.dataLayer.push({
-            event:                    'lead_form_submit',
-            source:                   'lp_magisterio',
-            course_interest:          'Pedagogia para Magistério',
-            landing_page:             window.location.href,
-            page:                     window.location.pathname,
-            assigned_seller_name:     sellerName,
-            assigned_seller_whatsapp: sellerWhatsapp
-          });
-        }
-        if (typeof fbq !== 'undefined') {
-          fbq('track', 'Lead', { content_name: 'Pedagogia Magistério', value: 249.00, currency: 'BRL' });
-        }
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'generate_lead', { event_category: 'Lead', event_label: 'Formulario_Pedagogia' });
-        }
+      console.info('[LP] Enviando lead para CRM', crmPayload);
 
-        /* 4. Redireciona para WhatsApp do vendedor */
-        if (whatsappUrl) {
-          window.location.href = whatsappUrl;
-        } else {
-          alert('Cadastro realizado! Em breve um especialista entrará em contato pelo WhatsApp.');
-          btn.disabled = false;
-          btn.textContent = 'Falar com especialista no WhatsApp →';
-        }
+      var whatsappUrl    = null;
+      var sellerName     = null;
+      var sellerWhatsapp = null;
 
-      } catch (err) {
-        console.error('Erro:', err);
+      try {
+        var crmResult = await chamarCRM(crmPayload);
+        console.info('[LP] Resposta CRM', crmResult);
+        if (crmResult) {
+          whatsappUrl    = crmResult.whatsapp_url             || null;
+          sellerName     = crmResult.assigned_seller_name     || null;
+          sellerWhatsapp = crmResult.assigned_seller_whatsapp || null;
+        }
+      } catch (crmErr) {
+        console.error('[LP] Erro CRM', crmErr);
         alert('Erro ao enviar. Por favor, tente novamente.');
+        btn.disabled = false;
+        btn.textContent = 'Falar com especialista no WhatsApp →';
+        return;
+      }
+
+      /* ── 3. Tracking ── */
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          event:                    'lead_form_submit',
+          source:                   'lp_magisterio',
+          course_interest:          'Pedagogia para Magistério',
+          landing_page:             window.location.href,
+          page:                     window.location.pathname,
+          assigned_seller_name:     sellerName,
+          assigned_seller_whatsapp: sellerWhatsapp
+        });
+      }
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead', { content_name: 'Pedagogia Magistério', value: 249.00, currency: 'BRL' });
+      }
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'generate_lead', { event_category: 'Lead', event_label: 'Formulario_Pedagogia' });
+      }
+
+      /* ── 4. Redireciona para WhatsApp do vendedor ── */
+      if (whatsappUrl) {
+        window.location.href = whatsappUrl;
+      } else {
+        console.warn('[LP] CRM nao retornou whatsapp_url');
+        alert('Cadastro realizado! Em breve um especialista entrará em contato pelo WhatsApp.');
         btn.disabled = false;
         btn.textContent = 'Falar com especialista no WhatsApp →';
       }
