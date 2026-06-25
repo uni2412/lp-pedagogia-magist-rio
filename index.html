@@ -521,6 +521,139 @@
       .stats-row { flex-wrap: wrap; gap: 20px; justify-content: center; }
       .header-inner { padding: 12px 16px; }
     }
+
+    /* ─── WHATSAPP CAPTURE WIDGET ────────────── */
+    .wa-capture-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1001;
+    }
+    .wa-capture-overlay.active { display: block; }
+    .wa-capture-backdrop {
+      position: absolute;
+      inset: 0;
+    }
+    .wa-capture-widget {
+      position: absolute;
+      bottom: 96px;
+      right: 24px;
+      width: 380px;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.04);
+      overflow: hidden;
+      animation: waSlideUp 0.25s ease-out;
+    }
+    @keyframes waSlideUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .wa-capture-header {
+      background: var(--navy);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .wa-capture-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .wa-capture-header-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .wa-capture-header-icon svg { width: 20px; height: 20px; fill: white; }
+    .wa-capture-header-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .wa-capture-close {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      font-size: 22px;
+      cursor: pointer;
+      padding: 4px 8px;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .wa-capture-close:hover { color: var(--white); }
+    .wa-capture-body {
+      padding: 20px;
+    }
+    .wa-capture-msg {
+      font-size: 13px;
+      color: var(--gray-text);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .wa-capture-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .wa-capture-input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid var(--gray-light);
+      border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      background: #fafbfc;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .wa-capture-input:focus {
+      outline: none;
+      border-color: var(--navy);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(13,35,64,0.08);
+    }
+    .wa-capture-input::placeholder { color: #adb5bd; }
+    .wa-capture-submit {
+      background: var(--green);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 4px;
+    }
+    .wa-capture-submit:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .wa-capture-submit:disabled {
+      background: var(--gray-light);
+      color: var(--gray-text);
+      cursor: not-allowed;
+      transform: none;
+    }
+    .wa-capture-error {
+      font-size: 12px;
+      color: #dc2626;
+      display: none;
+      margin-top: 4px;
+    }
+    .wa-capture-error.active { display: block; }
+    @media (max-width: 480px) {
+      .wa-capture-widget {
+        right: 16px;
+        left: 16px;
+        bottom: 88px;
+        width: auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -777,6 +910,32 @@
     </p>
   </footer>
 
+  <!-- ─── WHATSAPP CAPTURE WIDGET ───────────────────── -->
+  <div class="wa-capture-overlay" id="waCaptureOverlay">
+    <div class="wa-capture-backdrop" onclick="fecharCapturaWA()"></div>
+    <div class="wa-capture-widget">
+      <div class="wa-capture-header">
+        <div class="wa-capture-header-left">
+          <div class="wa-capture-header-icon">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 0C7.164 0 0 7.164 0 16c0 2.825.738 5.48 2.025 7.781L.05 31.95l8.35-2.019A15.904 15.904 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.333c-2.447 0-4.743-.661-6.719-1.814l-.481-.288-4.994 1.206 1.331-4.863-.316-.5A13.246 13.246 0 012.667 16c0-7.364 5.97-13.333 13.333-13.333S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.305-9.971c-.4-.2-2.369-1.169-2.738-1.303-.369-.131-.637-.2-.906.2-.269.4-1.044 1.303-1.281 1.569-.238.269-.475.3-.875.1-.4-.2-1.688-.622-3.213-1.984-1.188-1.059-1.991-2.366-2.225-2.766-.234-.4-.025-.616.175-.816.179-.179.4-.469.6-.703.2-.234.269-.4.4-.669.131-.269.066-.503-.034-.703-.1-.2-.906-2.184-1.244-2.991-.328-.788-.663-.681-.906-.694-.234-.012-.503-.015-.772-.015s-.706.1-1.075.503c-.369.4-1.409 1.378-1.409 3.359s1.444 3.897 1.644 4.166c.2.269 2.831 4.322 6.859 6.062.959.416 1.709.663 2.294.85.688.225 1.313.194 1.806.116.553-.084 2.369-.969 2.703-1.903.334-.934.334-1.734.234-1.903-.1-.169-.369-.269-.769-.469z"/></svg>
+          </div>
+          <span class="wa-capture-header-title">Fale com a Unisafer</span>
+        </div>
+        <button type="button" class="wa-capture-close" onclick="fecharCapturaWA()" aria-label="Fechar">&times;</button>
+      </div>
+      <div class="wa-capture-body">
+        <p class="wa-capture-msg">Olá! Preencha os campos abaixo para iniciar a conversa no WhatsApp.</p>
+        <form class="wa-capture-form" id="waCaptureForm">
+          <input type="text" class="wa-capture-input" id="waCapNome" placeholder="Nome *" required>
+          <input type="email" class="wa-capture-input" id="waCapEmail" placeholder="Email *" required>
+          <input type="tel" class="wa-capture-input" id="waCapTelefone" placeholder="Telefone com DDD *" required pattern="[0-9]{10,11}">
+          <p class="wa-capture-error" id="waCaptureError"></p>
+          <button type="submit" class="wa-capture-submit" id="waCaptureSubmit">Iniciar conversa</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- ─── SCRIPTS ─────────────────────────────────── -->
   <script>
     var CRM_URL = 'https://system.unisafereducacional.com.br/api/route-whatsapp';
@@ -791,34 +950,94 @@
       return resp.json();
     }
 
-    /* Botões de WhatsApp (sem formulário) — não alterar */
-    async function redirecionarWhatsApp() {
+    /* ── Source da URL ou padrão ── */
+    function obterSource() {
+      var params = new URLSearchParams(window.location.search);
+      return params.get('source') || 'lp_magisterio_whatsapp';
+    }
+
+    /* ── Captura WhatsApp: abrir/fechar widget ── */
+    function redirecionarWhatsApp() {
+      var overlay = document.getElementById('waCaptureOverlay');
+      overlay.classList.add('active');
       if (window.dataLayer) {
-        window.dataLayer.push({ event: 'whatsapp_click', source: 'lp_magisterio_whatsapp' });
+        window.dataLayer.push({ event: 'whatsapp_capture_open' });
       }
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'clique_whatsapp_lp', { event_category: 'Contato', event_label: 'Botao_Magisterio' });
+    }
+
+    function fecharCapturaWA() {
+      var overlay = document.getElementById('waCaptureOverlay');
+      overlay.classList.remove('active');
+      var errEl = document.getElementById('waCaptureError');
+      errEl.classList.remove('active');
+      errEl.textContent = '';
+    }
+
+    /* ── Captura WhatsApp: submit ── */
+    document.getElementById('waCaptureForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      var btn  = document.getElementById('waCaptureSubmit');
+      var errEl = document.getElementById('waCaptureError');
+      var nome  = document.getElementById('waCapNome').value.trim();
+      var email = document.getElementById('waCapEmail').value.trim();
+      var tel   = document.getElementById('waCapTelefone').value.trim();
+
+      errEl.classList.remove('active');
+      errEl.textContent = '';
+
+      if (!nome || !email || !tel) {
+        errEl.textContent = 'Preencha todos os campos obrigatórios.';
+        errEl.classList.add('active');
+        return;
       }
-      if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+
+      var sourceFinal = obterSource();
 
       try {
         var result = await chamarCRM({
-          name:            'Visitante da landing page',
-          email:           '',
-          phone:           '',
-          source:          'lp_magisterio_whatsapp',
+          name:            nome,
+          email:           email,
+          phone:           tel,
+          source:          sourceFinal,
           course_interest: 'Pedagogia para Magistério',
           landing_page:    window.location.href,
           page:            window.location.pathname,
-          message:         'Clique no botão de WhatsApp da LP de Pedagogia para Magistério'
+          event_type:      'whatsapp_click',
+          message:         'Lead via botão WhatsApp da LP de Pedagogia para Magistério'
         });
+
+        if (window.dataLayer) {
+          window.dataLayer.push({ event: 'whatsapp_capture_submit', source: sourceFinal });
+        }
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'clique_whatsapp_lp', { event_category: 'Contato', event_label: 'Botao_Magisterio' });
+        }
+        if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+
         if (result && result.whatsapp_url) {
-          window.open(result.whatsapp_url, '_blank');
+          if (window.dataLayer) {
+            window.dataLayer.push({ event: 'whatsapp_click', source: sourceFinal });
+          }
+          window.location.href = result.whatsapp_url;
+        } else {
+          errEl.textContent = 'Cadastro realizado! Em breve um especialista entrará em contato.';
+          errEl.style.color = 'var(--green-dark)';
+          errEl.classList.add('active');
+          btn.disabled = false;
+          btn.textContent = 'Iniciar conversa';
         }
       } catch (err) {
-        console.warn('[LP] CRM indisponível (botão WhatsApp):', err);
+        console.warn('[LP] CRM indisponível (captura WhatsApp):', err);
+        errEl.textContent = 'Erro ao enviar. Tente novamente.';
+        errEl.classList.add('active');
+        btn.disabled = false;
+        btn.textContent = 'Iniciar conversa';
       }
-    }
+    });
 
     /* Formulário principal */
     console.info('[LP] Script carregado');
