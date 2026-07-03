@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pedagogia para Magistério — Unisafer Educacional</title>
-  <meta name="description" content="Já tem o magistério? Regularize sua situação e obtenha o diploma de Pedagogia em 18 meses, reconhecido pelo MEC. Fale agora com um consultor educacional." />
+  <title>Pedagogia para Magistério em 18 meses | Unisafer Educacional</title>
+  <meta name="description" content="Faça Pedagogia para Magistério em 18 meses, 100% online, com diploma reconhecido pelo MEC. Condição especial de matrícula na Unisafer Educacional." />
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8V74VLD8QW"></script>
@@ -237,6 +237,38 @@
       flex-shrink: 0;
     }
     .hero-sub { color: #6a8fae; font-size: 13px; }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .btn-cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 16px 30px;
+      border-radius: 50px;
+      border: 2px solid rgba(255,255,255,0.4);
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    .btn-cta-secondary:hover { border-color: var(--gold-light); background: rgba(255,255,255,0.06); transform: translateY(-1px); }
+    .hero-reinforcement {
+      color: var(--gold-light);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 800px) {
+      .hero-ctas { justify-content: center; }
+    }
 
     /* ─── LEAD FORM CARD ─────────────────────── */
     .lead-form-card {
@@ -316,6 +348,35 @@
     }
     .form-privacy { font-size: 11px; color: #9ca3af; text-align: center; margin-top: 10px; }
 
+    .qualify-group { border: none; text-align: left; }
+    .qualify-legend {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      padding: 0;
+    }
+    .qualify-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .qualify-option {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #fafbfc;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 50px;
+      padding: 8px 14px;
+      font-size: 12.5px;
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .qualify-option:has(input:checked) {
+      border-color: var(--navy);
+      background: rgba(13,35,64,0.06);
+      font-weight: 700;
+    }
+    .qualify-option input { accent-color: var(--navy); margin: 0; }
+
     /* ─── INFO BAR ───────────────────────────── */
     .info-bar {
       background: #fffbeb;
@@ -366,6 +427,7 @@
       box-shadow: var(--shadow);
     }
     .pain-list li .icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .fit-list li { border-left-color: var(--green); }
 
     /* ─── BENEFITS GRID ──────────────────────── */
     .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
@@ -442,6 +504,7 @@
       box-shadow: var(--shadow-md);
     }
     .price-tag  { font-size: 13px; color: var(--gray-text); margin-bottom: 4px; font-weight: 500; }
+    .price-old  { font-size: 16px; color: #9ca3af; text-decoration: line-through; margin-bottom: 2px; }
     .price-main { font-weight: 700; font-size: 46px; color: var(--navy); margin-bottom: 4px; line-height: 1; }
     .price-sub  { font-size: 13px; color: var(--gray-text); line-height: 2; }
     .price-divider { border: none; border-top: 1px solid var(--gray-light); margin: 18px 0; }
@@ -668,14 +731,14 @@
           <span class="logo-sub">Educacional</span>
         </span>
       </a>
-      <button type="button" class="header-cta" onclick="redirecionarWhatsApp()">
-        💬 Falar com especialista
+      <button type="button" class="header-cta" onclick="redirecionarWhatsApp('lp_magisterio_header')">
+        💬 Falar com um consultor
       </button>
     </div>
   </header>
 
   <!-- ─── FLOATING WHATSAPP ────────────────────── -->
-  <button type="button" class="whatsapp-float" aria-label="Falar no WhatsApp" onclick="redirecionarWhatsApp()">
+  <button type="button" class="whatsapp-float" aria-label="Falar no WhatsApp" onclick="redirecionarWhatsApp('lp_magisterio_float')">
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
       <path d="M16 0C7.164 0 0 7.164 0 16c0 2.825.738 5.48 2.025 7.781L.05 31.95l8.35-2.019A15.904 15.904 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.333c-2.447 0-4.743-.661-6.719-1.814l-.481-.288-4.994 1.206 1.331-4.863-.316-.5A13.246 13.246 0 012.667 16c0-7.364 5.97-13.333 13.333-13.333S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.305-9.971c-.4-.2-2.369-1.169-2.738-1.303-.369-.131-.637-.2-.906.2-.269.4-1.044 1.303-1.281 1.569-.238.269-.475.3-.875.1-.4-.2-1.688-.622-3.213-1.984-1.188-1.059-1.991-2.366-2.225-2.766-.234-.4-.025-.616.175-.816.179-.179.4-.469.6-.703.2-.234.269-.4.4-.669.131-.269.066-.503-.034-.703-.1-.2-.906-2.184-1.244-2.991-.328-.788-.663-.681-.906-.694-.234-.012-.503-.015-.772-.015s-.706.1-1.075.503c-.369.4-1.409 1.378-1.409 3.359s1.444 3.897 1.644 4.166c.2.269 2.831 4.322 6.859 6.062.959.416 1.709.663 2.294.85.688.225 1.313.194 1.806.116.553-.084 2.369-.969 2.703-1.903.334-.934.334-1.734.234-1.903-.1-.169-.369-.269-.769-.469z"/>
     </svg>
@@ -690,25 +753,40 @@
           <span class="badge-dot"></span>
           Inscrições abertas — vagas disponíveis
         </div>
-        <h1>Você tem o magistério e ainda não <em>possui Pedagogia?</em></h1>
-        <p>Obtenha seu diploma de Pedagogia em 18 meses, de forma semipresencial e reconhecido pelo MEC — e abra as portas para concursos públicos e novas oportunidades na educação.</p>
+        <h1>Pedagogia para Magistério <em>em 18 meses</em></h1>
+        <p>Curso 100% online para quem possui Magistério/Normal Médio e deseja conquistar o diploma de Pedagogia reconhecido pelo MEC.</p>
         <ul class="hero-bullets">
           <li>Diploma reconhecido pelo MEC</li>
           <li>Aproveitamento do seu magistério</li>
-          <li>Semipresencial — estude no seu ritmo</li>
+          <li>100% online — estude no seu ritmo, de qualquer lugar do Brasil</li>
           <li>Apto para concursos públicos e rede particular</li>
         </ul>
+        <div class="hero-ctas">
+          <button type="button" class="btn-cta" onclick="redirecionarWhatsApp('lp_magisterio_hero_primary')">
+            Quero saber se posso fazer
+          </button>
+          <a href="#investimento" class="btn-cta-secondary" onclick="trackEvent('cta_click', {cta_label:'Ver condição de matrícula', cta_location:'hero'})">
+            Ver condição de matrícula
+          </a>
+        </div>
+        <p class="hero-reinforcement">🔥 Matrícula com 50% de desconto por tempo limitado.</p>
         <p class="hero-sub">Fale agora com um especialista — sem compromisso</p>
       </div>
 
       <div class="lead-form-card">
         <div id="formContainer">
           <div class="form-icon">🎓</div>
-          <h2>Garanta sua matrícula</h2>
+          <h2>Confirme se você tem o perfil</h2>
           <p>Preencha abaixo e fale direto com um especialista no WhatsApp</p>
           <form id="leadForm" class="lead-form">
             <input type="hidden" name="access_key" value="7602cf56-3c0f-48d2-baa5-3318ca461ffe">
             <input type="hidden" name="origem"     value="LP Pedagogia Magistério">
+            <input type="hidden" name="utm_source"   id="utm_source">
+            <input type="hidden" name="utm_medium"   id="utm_medium">
+            <input type="hidden" name="utm_campaign" id="utm_campaign">
+            <input type="hidden" name="utm_content"  id="utm_content">
+            <input type="hidden" name="utm_term"     id="utm_term">
+            <input type="hidden" name="gclid"        id="gclid_field">
             <input type="checkbox" name="botcheck" style="display:none">
             <div class="input-wrapper">
               <span class="input-icon">👤</span>
@@ -722,8 +800,47 @@
               <span class="input-icon">📱</span>
               <input type="tel"   name="whatsapp" id="whatsapp" class="form-input" placeholder="WhatsApp com DDD" required pattern="[0-9]{10,11}">
             </div>
+
+            <fieldset class="qualify-group">
+              <legend class="qualify-legend">Você possui Magistério/Normal Médio?</legend>
+              <div class="qualify-options">
+                <label class="qualify-option"><input type="radio" name="possui_magisterio" value="Sim" required> Sim</label>
+                <label class="qualify-option"><input type="radio" name="possui_magisterio" value="Não" required> Não</label>
+                <label class="qualify-option"><input type="radio" name="possui_magisterio" value="Tenho dúvida" required> Tenho dúvida</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="qualify-group">
+              <legend class="qualify-legend">Você já atua na área da educação?</legend>
+              <div class="qualify-options">
+                <label class="qualify-option"><input type="radio" name="atua_educacao" value="Sim" required> Sim</label>
+                <label class="qualify-option"><input type="radio" name="atua_educacao" value="Não" required> Não</label>
+                <label class="qualify-option"><input type="radio" name="atua_educacao" value="Já atuei" required> Já atuei</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="qualify-group">
+              <legend class="qualify-legend">Qual seu principal objetivo?</legend>
+              <div class="qualify-options">
+                <label class="qualify-option"><input type="radio" name="objetivo" value="Conquistar diploma de Pedagogia" required> Conquistar diploma de Pedagogia</label>
+                <label class="qualify-option"><input type="radio" name="objetivo" value="Regularizar minha formação" required> Regularizar minha formação</label>
+                <label class="qualify-option"><input type="radio" name="objetivo" value="Avançar na carreira docente" required> Avançar na carreira docente</label>
+                <label class="qualify-option"><input type="radio" name="objetivo" value="Trabalhar na área da educação" required> Trabalhar na área da educação</label>
+                <label class="qualify-option"><input type="radio" name="objetivo" value="Quero saber valores" required> Quero saber valores</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="qualify-group">
+              <legend class="qualify-legend">Melhor horário para atendimento:</legend>
+              <div class="qualify-options">
+                <label class="qualify-option"><input type="radio" name="horario_atendimento" value="Manhã" required> Manhã</label>
+                <label class="qualify-option"><input type="radio" name="horario_atendimento" value="Tarde" required> Tarde</label>
+                <label class="qualify-option"><input type="radio" name="horario_atendimento" value="Noite" required> Noite</label>
+              </div>
+            </fieldset>
+
             <button type="submit" class="form-submit" id="submitBtn">
-              Falar com especialista no WhatsApp →
+              Quero fazer Pedagogia em 18 meses →
             </button>
           </form>
           <p class="form-privacy">🔒 Seus dados estão protegidos. Sem spam.</p>
@@ -752,6 +869,22 @@
     </div>
   </section>
 
+  <!-- ─── PARA QUEM É ───────────────────────────── -->
+  <section>
+    <div class="container">
+      <p class="section-label">Este curso é para você</p>
+      <h2 class="section-title">Esse curso é ideal para você que:</h2>
+      <ul class="pain-list fit-list">
+        <li><span class="icon">✅</span> Possui Magistério ou Normal Médio</li>
+        <li><span class="icon">✅</span> Quer conquistar o diploma de Pedagogia</li>
+        <li><span class="icon">✅</span> Deseja avançar na carreira docente</li>
+        <li><span class="icon">✅</span> Já atua ou deseja atuar na área da educação</li>
+        <li><span class="icon">✅</span> Busca uma formação reconhecida pelo MEC</li>
+        <li><span class="icon">✅</span> Quer estudar de forma online, com mais flexibilidade</li>
+      </ul>
+    </div>
+  </section>
+
   <!-- ─── BENEFÍCIOS ────────────────────────────── -->
   <section>
     <div class="container">
@@ -759,8 +892,8 @@
       <h2 class="section-title">O curso feito para quem tem magistério e quer avançar</h2>
       <div class="benefits-grid">
         <div class="benefit-card"><div class="benefit-icon">🎓</div><div class="benefit-title">Diploma reconhecido pelo MEC</div><div class="benefit-desc">Aproveitamento de estudos amparado pela Lei nº 9.394/96</div></div>
-        <div class="benefit-card"><div class="benefit-icon">⏱️</div><div class="benefit-title">A partir de 18 meses</div><div class="benefit-desc">Com aproveitamento do seu magistério</div></div>
-        <div class="benefit-card"><div class="benefit-icon">📱</div><div class="benefit-title">Semipresencial</div><div class="benefit-desc">Videoaulas + 1 encontro ao vivo por mês via Google Meet</div></div>
+        <div class="benefit-card"><div class="benefit-icon">⏱️</div><div class="benefit-title">Em 18 meses</div><div class="benefit-desc">Com aproveitamento do seu magistério</div></div>
+        <div class="benefit-card"><div class="benefit-icon">🌐</div><div class="benefit-title">100% Online</div><div class="benefit-desc">Estude de qualquer lugar do Brasil, no seu ritmo</div></div>
         <div class="benefit-card"><div class="benefit-icon">📋</div><div class="benefit-title">Apto a concursos</div><div class="benefit-desc">Ensino infantil, fundamental I e gestão escolar</div></div>
         <div class="benefit-card"><div class="benefit-icon">💬</div><div class="benefit-title">Suporte pelo WhatsApp</div><div class="benefit-desc">Tutores especializados sempre disponíveis</div></div>
         <div class="benefit-card"><div class="benefit-icon">📖</div><div class="benefit-title">Material didático</div><div class="benefit-desc">Ebook interativo, fácil leitura e bem ilustrado</div></div>
@@ -773,9 +906,9 @@
     <div class="container">
       <div class="stats-row">
         <div><span class="stat-num">11 mil+</span><div class="stat-label">alunos formados</div></div>
-        <div><span class="stat-num">18 meses</span><div class="stat-label">duração mínima</div></div>
+        <div><span class="stat-num">18 meses</span><div class="stat-label">de duração</div></div>
         <div><span class="stat-num">MEC</span><div class="stat-label">reconhecido</div></div>
-        <div><span class="stat-num">SP</span><div class="stat-label">e todo o Brasil</div></div>
+        <div><span class="stat-num">100%</span><div class="stat-label">online, em todo o Brasil</div></div>
       </div>
     </div>
   </section>
@@ -789,10 +922,10 @@
         <div class="testimonial">
           <p class="testimonial-text">"Tinha o magistério há anos e não conseguia avançar na carreira. Fiz o curso e em 18 meses já estava apta para o concurso. Melhor decisão que tomei!"</p>
           <div class="testimonial-author">Ana Paula S.</div>
-          <div class="testimonial-role">Docente — São Paulo, SP</div>
+          <div class="testimonial-role">Docente formada pela Unisafer</div>
         </div>
         <div class="testimonial">
-          <p class="testimonial-text">"Achei que ia ser complicado conciliar com o trabalho, mas o formato semipresencial facilitou tudo. O suporte pelo WhatsApp estava sempre disponível quando precisei."</p>
+          <p class="testimonial-text">"Achei que ia ser complicado conciliar com o trabalho, mas o formato 100% online facilitou tudo. O suporte pelo WhatsApp estava sempre disponível quando precisei."</p>
           <div class="testimonial-author">Fernanda R.</div>
           <div class="testimonial-role">Especialista em Educação — Unisafer</div>
         </div>
@@ -808,50 +941,58 @@
   <!-- ─── COMO FUNCIONA ──────────────────────────── -->
   <section>
     <div class="container">
-      <p class="section-label">O processo</p>
+      <p class="section-label">O curso</p>
       <h2 class="section-title">Como funciona?</h2>
       <div class="steps">
         <div class="step">
-          <div class="step-num">1</div>
-          <div><div class="step-title">Fale com nosso especialista no WhatsApp</div><div class="step-desc">Tire suas dúvidas, entenda como seu magistério é aproveitado e saiba quais documentos precisa separar.</div></div>
+          <div class="step-num">🗓️</div>
+          <div><div class="step-title">Duração: 18 meses</div><div class="step-desc">Com aproveitamento do seu Magistério/Normal Médio.</div></div>
         </div>
         <div class="step">
-          <div class="step-num">2</div>
-          <div><div class="step-title">Faça sua matrícula</div><div class="step-desc">Processo simples, rápido e sem burocracia. Matrícula a partir de R$ 199 com boleto ou Pix.</div></div>
+          <div class="step-num">🌐</div>
+          <div><div class="step-title">Formato: 100% online</div><div class="step-desc">Estude de qualquer lugar do Brasil, no seu ritmo.</div></div>
         </div>
         <div class="step">
-          <div class="step-num">3</div>
-          <div><div class="step-title">Estude no seu ritmo</div><div class="step-desc">Videoaulas, ebook interativo e 1 aula ao vivo por mês via Google Meet. Suporte por WhatsApp e tutoria especializada.</div></div>
+          <div class="step-num">📝</div>
+          <div><div class="step-title">Avaliações: atividades, exercícios e práticas</div><div class="step-desc">Sem provas tradicionais.</div></div>
         </div>
         <div class="step">
-          <div class="step-num">4</div>
-          <div><div class="step-title">Receba seu diploma em 18 meses</div><div class="step-desc">Diploma reconhecido pelo MEC, apto para concursos públicos, rede particular e gestão escolar.</div></div>
+          <div class="step-num">🎯</div>
+          <div><div class="step-title">Projeto final: Projeto Prático Final</div><div class="step-desc">Não é TCC tradicional.</div></div>
+        </div>
+        <div class="step">
+          <div class="step-num">🏫</div>
+          <div><div class="step-title">Estágio</div><div class="step-desc">Conforme análise do perfil e experiência do aluno.</div></div>
+        </div>
+        <div class="step">
+          <div class="step-num">💬</div>
+          <div><div class="step-title">Atendimento: suporte pelo WhatsApp</div><div class="step-desc">Tutores especializados sempre disponíveis.</div></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ─── INVESTIMENTO ────────────────────────────── -->
-  <section>
+  <section id="investimento">
     <div class="container">
       <p class="section-label">Investimento</p>
-      <h2 class="section-title">Valores acessíveis para transformar sua carreira</h2>
+      <h2 class="section-title">Condição especial para a próxima turma</h2>
       <div class="price-box">
-        <p class="price-tag">Matrícula</p>
-        <p class="price-main">R$ 199</p>
-        <p class="price-sub">no boleto ou Pix</p>
+        <p class="price-tag">Matrícula promocional</p>
+        <p class="price-old">De R$ 199</p>
+        <p class="price-main">R$ 99,50</p>
+        <p class="price-sub">50% de desconto — no boleto ou Pix</p>
         <hr class="price-divider" />
-        <p style="font-size:13px;color:var(--gray-text);margin-bottom:14px;">Escolha a forma de pagamento das mensalidades:</p>
+        <p style="font-size:13px;color:var(--gray-text);margin-bottom:14px;">Mensalidade:</p>
         <div class="price-options">
-          <div class="price-option"><span>15x no boleto</span><strong>R$ 249/mês</strong></div>
-          <div class="price-option"><span>12x no cartão</span><strong>R$ 280/mês</strong></div>
-          <div class="price-option"><span>À vista</span><strong>10% de desconto</strong></div>
+          <div class="price-option"><span>Mensalidade padrão</span><strong>R$ 249</strong></div>
+          <div class="price-option"><span>Mensalidade promocional (10% off)</span><strong>R$ 224,10</strong></div>
         </div>
-        <button type="button" onclick="redirecionarWhatsApp()" class="btn-cta" style="margin-top:28px;">
-          💬 Falar no WhatsApp e garantir condição
+        <button type="button" onclick="redirecionarWhatsApp('lp_magisterio_price_box', true)" class="btn-cta" style="margin-top:28px;">
+          Confirmar se tenho perfil para o curso
         </button>
       </div>
-      <p style="font-size:12px;color:var(--gray-text);text-align:center;">* Os valores podem sofrer alterações sem aviso prévio. Promoções e descontos não cumulativos.</p>
+      <p style="font-size:12px;color:var(--gray-text);text-align:center;">* Vagas para a próxima turma. Os valores podem sofrer alterações sem aviso prévio. Promoções e descontos não cumulativos.</p>
     </div>
   </section>
 
@@ -862,24 +1003,32 @@
       <h2 class="section-title">Perguntas e respostas</h2>
       <div class="faq-list">
         <div class="faq-item">
-          <p class="faq-q">Preciso ter o magistério para fazer o curso?</p>
-          <p class="faq-a">Sim. Este curso é exclusivo para profissionais que já possuem o magistério / normal médio. Ele é estruturado justamente para aproveitar os seus estudos anteriores e encurtar a formação.</p>
+          <p class="faq-q">O curso é reconhecido pelo MEC?</p>
+          <p class="faq-a">Sim, o diploma é reconhecido pelo MEC.</p>
         </div>
         <div class="faq-item">
-          <p class="faq-q">O diploma é reconhecido pelo MEC?</p>
-          <p class="faq-a">Sim. O aproveitamento de estudos é amparado pela Lei nº 9.394/96 e o diploma é emitido por instituições parceiras reconhecidas pelo MEC.</p>
+          <p class="faq-q">O curso é 100% online?</p>
+          <p class="faq-a">Sim, o curso pode ser realizado no formato 100% online.</p>
         </div>
         <div class="faq-item">
-          <p class="faq-q">Como funcionam as aulas?</p>
-          <p class="faq-a">Você estuda pelas videoaulas e ebook interativo no seu ritmo, tem 1 aula ao vivo por mês via Google Meet e conta com suporte por WhatsApp e tutoria especializada sempre que precisar.</p>
+          <p class="faq-q">Quem pode fazer esse curso?</p>
+          <p class="faq-a">O curso é indicado para quem possui Magistério/Normal Médio e deseja conquistar o diploma de Pedagogia.</p>
         </div>
         <div class="faq-item">
-          <p class="faq-q">Quando posso começar?</p>
-          <p class="faq-a">As inscrições estão abertas e há vagas disponíveis para novas matrículas. Fale com um de nossos consultores educacionais para conhecer as condições atuais e iniciar sua jornada o quanto antes.</p>
+          <p class="faq-q">Tem provas tradicionais?</p>
+          <p class="faq-a">Não. As avaliações são feitas por atividades, exercícios e práticas.</p>
         </div>
         <div class="faq-item">
-          <p class="faq-q">Consigo fazer o curso trabalhando?</p>
-          <p class="faq-a">Com certeza. O curso foi desenhado para profissionais que trabalham. O formato semipresencial com aulas gravadas permite que você estude nos horários que tiver disponíveis.</p>
+          <p class="faq-q">Tem TCC?</p>
+          <p class="faq-a">O curso possui Projeto Prático Final, não TCC tradicional.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Tem estágio?</p>
+          <p class="faq-a">Sim. A carga e organização do estágio seguem a análise do perfil e da experiência do aluno.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Como faço a matrícula?</p>
+          <p class="faq-a">O primeiro passo é falar com a equipe da Unisafer pelo WhatsApp para confirmar seu perfil e receber as condições promocionais.</p>
         </div>
       </div>
     </div>
@@ -889,10 +1038,10 @@
   <section style="padding:52px 0 84px;">
     <div class="container">
       <div class="cta-final">
-        <h2>Dê o próximo passo na sua carreira hoje</h2>
-        <p>Fale agora com um consultor educacional da Unisafer, tire todas as suas dúvidas e garanta sua matrícula — sem compromisso.</p>
-        <button type="button" onclick="redirecionarWhatsApp()" class="btn-cta">
-          💬 Falar com especialista no WhatsApp
+        <h2>Pedagogia para Magistério em 18 meses. Dê o próximo passo hoje.</h2>
+        <p>Fale agora com um consultor educacional da Unisafer, tire todas as suas dúvidas e garanta sua matrícula com 50% de desconto — sem compromisso.</p>
+        <button type="button" onclick="redirecionarWhatsApp('lp_magisterio_cta_final')" class="btn-cta">
+          💬 Falar com um consultor
         </button>
         <p class="cta-note">Atendimento com consultor educacional — seg a sex, 9h às 18h</p>
       </div>
@@ -939,6 +1088,7 @@
   <!-- ─── SCRIPTS ─────────────────────────────────── -->
   <script>
     var CRM_URL = 'https://system.unisafereducacional.com.br/api/route-whatsapp';
+    var pendingSource = null;
 
     async function chamarCRM(payload) {
       var resp = await fetch(CRM_URL, {
@@ -950,18 +1100,50 @@
       return resp.json();
     }
 
-    /* ── Source da URL ou padrão ── */
+    /* ── Captura e persistência de UTMs e gclid ── */
+    function obterUTMs() {
+      var params = new URLSearchParams(window.location.search);
+      var keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid'];
+      var out = {};
+      keys.forEach(function (k) {
+        var v = params.get(k);
+        if (v) { sessionStorage.setItem(k, v); }
+        out[k] = v || sessionStorage.getItem(k) || '';
+      });
+      return out;
+    }
+
+    (function preencherCamposUTM() {
+      var utms = obterUTMs();
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (k) {
+        var el = document.getElementById(k);
+        if (el) el.value = utms[k];
+      });
+      var gclidEl = document.getElementById('gclid_field');
+      if (gclidEl) gclidEl.value = utms.gclid;
+    })();
+
+    /* ── Evento genérico de tracking (GA4 / GTM dataLayer) com UTMs anexadas ── */
+    function trackEvent(eventName, extra) {
+      var payload = Object.assign({ event: eventName }, extra || {}, obterUTMs());
+      if (window.dataLayer) window.dataLayer.push(payload);
+    }
+
+    /* ── Source: parâmetro explícito > UTM > query "source" > padrão ── */
     function obterSource() {
       var params = new URLSearchParams(window.location.search);
-      return params.get('source') || 'lp_magisterio_whatsapp';
+      return pendingSource || obterUTMs().utm_source || params.get('source') || 'lp_magisterio_whatsapp';
     }
 
     /* ── Captura WhatsApp: abrir/fechar widget ── */
-    function redirecionarWhatsApp() {
+    function redirecionarWhatsApp(source, isMatriculaCta) {
+      pendingSource = source || null;
       var overlay = document.getElementById('waCaptureOverlay');
       overlay.classList.add('active');
-      if (window.dataLayer) {
-        window.dataLayer.push({ event: 'whatsapp_capture_open' });
+      trackEvent('whatsapp_capture_open', { cta_source: obterSource() });
+      trackEvent('whatsapp_click', { cta_source: obterSource() });
+      if (isMatriculaCta) {
+        trackEvent('matricula_button_click', { cta_source: obterSource() });
       }
     }
 
@@ -996,9 +1178,10 @@
       btn.textContent = 'Enviando...';
 
       var sourceFinal = obterSource();
+      var utms = obterUTMs();
 
       try {
-        var result = await chamarCRM({
+        var result = await chamarCRM(Object.assign({
           name:            nome,
           email:           email,
           phone:           tel,
@@ -1008,7 +1191,7 @@
           page:            window.location.pathname,
           event_type:      'whatsapp_click',
           message:         'Lead via botão WhatsApp da LP de Pedagogia para Magistério'
-        });
+        }, utms));
 
         if (window.dataLayer) {
           window.dataLayer.push({ event: 'whatsapp_capture_submit', source: sourceFinal });
@@ -1057,12 +1240,18 @@
       var email    = document.getElementById('email').value.trim();
       var whatsapp = document.getElementById('whatsapp').value.trim();
 
-      console.info('[LP] Campos capturados', { nome: nome, email: email, whatsapp: whatsapp });
+      var possuiMagisterio    = (form.querySelector('input[name="possui_magisterio"]:checked') || {}).value || '';
+      var atuaEducacao        = (form.querySelector('input[name="atua_educacao"]:checked') || {}).value || '';
+      var objetivo            = (form.querySelector('input[name="objetivo"]:checked') || {}).value || '';
+      var horarioAtendimento  = (form.querySelector('input[name="horario_atendimento"]:checked') || {}).value || '';
+      var utms = obterUTMs();
 
-      if (!nome || !email || !whatsapp) {
+      console.info('[LP] Campos capturados', { nome: nome, email: email, whatsapp: whatsapp, possuiMagisterio: possuiMagisterio, atuaEducacao: atuaEducacao, objetivo: objetivo, horarioAtendimento: horarioAtendimento });
+
+      if (!nome || !email || !whatsapp || !possuiMagisterio || !atuaEducacao || !objetivo || !horarioAtendimento) {
         console.warn('[LP] Campos obrigatorios vazios');
         btn.disabled = false;
-        btn.textContent = 'Falar com especialista no WhatsApp →';
+        btn.textContent = 'Quero fazer Pedagogia em 18 meses →';
         return;
       }
 
@@ -1078,6 +1267,16 @@
         fd.append('email',           email);
         fd.append('phone',           whatsapp);
         fd.append('course_interest', 'Pedagogia para Magistério');
+        fd.append('possui_magisterio',     possuiMagisterio);
+        fd.append('atua_educacao',         atuaEducacao);
+        fd.append('objetivo',              objetivo);
+        fd.append('horario_atendimento',   horarioAtendimento);
+        fd.append('utm_source',   utms.utm_source);
+        fd.append('utm_medium',   utms.utm_medium);
+        fd.append('utm_campaign', utms.utm_campaign);
+        fd.append('utm_content',  utms.utm_content);
+        fd.append('utm_term',     utms.utm_term);
+        fd.append('gclid',        utms.gclid);
         fd.append('message',         'Lead vindo da LP de Pedagogia para Magistério');
         fd.append('origem',          'LP Pedagogia Magistério');
 
@@ -1096,16 +1295,20 @@
       }
 
       /* ── 2. CRM Unisafer — obtém whatsapp_url ── */
-      var crmPayload = {
-        name:            nome,
-        email:           email,
-        phone:           whatsapp,
-        source:          'lp_magisterio',
-        course_interest: 'Pedagogia para Magistério',
-        landing_page:    window.location.href,
-        page:            window.location.pathname,
-        message:         'Lead vindo da LP de Pedagogia para Magistério'
-      };
+      var crmPayload = Object.assign({
+        name:                 nome,
+        email:                email,
+        phone:                whatsapp,
+        source:               'lp_magisterio',
+        course_interest:      'Pedagogia para Magistério',
+        landing_page:         window.location.href,
+        page:                 window.location.pathname,
+        possui_magisterio:    possuiMagisterio,
+        atua_educacao:        atuaEducacao,
+        objetivo:             objetivo,
+        horario_atendimento:  horarioAtendimento,
+        message:              'Lead vindo da LP de Pedagogia para Magistério'
+      }, utms);
 
       var crmResult = null;
       var whatsappUrl    = null;
@@ -1125,24 +1328,25 @@
         console.error('[LP] Erro CRM', crmErr);
         alert('Erro ao enviar. Por favor, tente novamente.');
         btn.disabled = false;
-        btn.textContent = 'Falar com especialista no WhatsApp →';
+        btn.textContent = 'Quero fazer Pedagogia em 18 meses →';
         return;
       }
 
       /* ── 3. Tracking ── */
-      if (window.dataLayer) {
-        window.dataLayer.push({
-          event:                    'lead_form_submit',
-          source:                   'lp_magisterio',
-          course_interest:          'Pedagogia para Magistério',
-          landing_page:             window.location.href,
-          page:                     window.location.pathname,
-          assigned_seller_name:     sellerName,
-          assigned_seller_whatsapp: sellerWhatsapp
-        });
-      }
+      trackEvent('lead_form_submit', {
+        source:                   'lp_magisterio',
+        course_interest:          'Pedagogia para Magistério',
+        landing_page:             window.location.href,
+        page:                     window.location.pathname,
+        possui_magisterio:        possuiMagisterio,
+        atua_educacao:            atuaEducacao,
+        objetivo:                 objetivo,
+        horario_atendimento:      horarioAtendimento,
+        assigned_seller_name:     sellerName,
+        assigned_seller_whatsapp: sellerWhatsapp
+      });
       if (typeof fbq !== 'undefined') {
-        fbq('track', 'Lead', { content_name: 'Pedagogia Magistério', value: 249.00, currency: 'BRL' });
+        fbq('track', 'Lead', { content_name: 'Pedagogia Magistério', value: 224.10, currency: 'BRL' });
       }
       if (typeof gtag !== 'undefined') {
         gtag('event', 'generate_lead', { event_category: 'Lead', event_label: 'Formulario_Pedagogia' });
@@ -1155,7 +1359,7 @@
         console.warn('[LP] CRM nao retornou whatsapp_url');
         alert('Cadastro realizado! Em breve um especialista entrará em contato pelo WhatsApp.');
         btn.disabled = false;
-        btn.textContent = 'Falar com especialista no WhatsApp →';
+        btn.textContent = 'Quero fazer Pedagogia em 18 meses →';
       }
     });
   </script>
