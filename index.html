@@ -1232,7 +1232,7 @@
         <li>Diploma reconhecido pelo MEC</li>
         <li>Atendimento pelo WhatsApp</li>
       </ul>
-      <button type="button" class="promo-popup-cta" id="promoPopupCta" onclick="clicarCtaPromoPopup()">Quero aproveitar a promoção</button>
+      <a href="https://wa.me/5511994687149?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20promo%C3%A7%C3%A3o%20Pedagogia%20para%20Magist%C3%A9rio%20%2B%20P%C3%B3s-gradua%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" class="promo-popup-cta" id="promoPopupCta">Quero aproveitar a promoção</a>
       <p class="promo-popup-note">Condição promocional válida para a próxima turma e sujeita à disponibilidade.</p>
     </div>
   </div>
@@ -1592,21 +1592,18 @@
         }
       });
 
-      /* CTA do pop-up usa a mesma configuração dos demais CTAs da LP
-         (redirecionarWhatsApp -> abre o widget de captura já usado no
-         header, hero, price-box e cta-final). */
-      window.clicarCtaPromoPopup = function () {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: 'click_popup_promo_magisterio_pos',
-          product: 'pedagogia_magisterio',
-          offer: 'pedagogia_pos_50_desconto'
+      var ctaLink = document.getElementById('promoPopupCta');
+      if (ctaLink) {
+        ctaLink.addEventListener('click', function () {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'click_popup_promo_magisterio_pos',
+            product: 'pedagogia_magisterio',
+            offer: 'pedagogia_pos_50_desconto'
+          });
+          fecharPopupPromo();
         });
-        fecharPopupPromo();
-        if (typeof redirecionarWhatsApp === 'function') {
-          redirecionarWhatsApp('lp_magisterio_popup_promo', true);
-        }
-      };
+      }
     })();
   </script>
 
