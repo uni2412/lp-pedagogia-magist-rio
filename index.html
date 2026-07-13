@@ -1232,7 +1232,7 @@
         <li>Diploma reconhecido pelo MEC</li>
         <li>Atendimento pelo WhatsApp</li>
       </ul>
-      <a href="https://wa.me/5511994687149?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20promo%C3%A7%C3%A3o%20Pedagogia%20para%20Magist%C3%A9rio%20%2B%20P%C3%B3s-gradua%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" class="promo-popup-cta" id="promoPopupCta">Quero aproveitar a promoção</a>
+      <button type="button" class="promo-popup-cta" id="promoPopupCta">Quero aproveitar a promoção</button>
       <p class="promo-popup-note">Condição promocional válida para a próxima turma e sujeita à disponibilidade.</p>
     </div>
   </div>
@@ -1297,6 +1297,37 @@
       if (isMatriculaCta) {
         trackEvent('matricula_button_click', { cta_source: obterSource() });
       }
+    }
+
+    /* ── Rotação direta de WhatsApp (sem formulário) — usado no popup promocional ── */
+    async function abrirWhatsAppRotacao(source, fallbackUrl) {
+      trackEvent('whatsapp_click', { cta_source: source });
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'clique_whatsapp_lp', { event_category: 'Contato', event_label: 'Botao_Magisterio' });
+      }
+      if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+
+      try {
+        var result = await chamarCRM(Object.assign({
+          name:            'Visitante da landing page',
+          email:           '',
+          phone:           '',
+          source:          source,
+          course_interest: 'Pedagogia para Magistério',
+          landing_page:    window.location.href,
+          page:            window.location.pathname,
+          event_type:      'whatsapp_click',
+          message:         'Clique no popup promocional da LP de Pedagogia para Magistério'
+        }, obterUTMs()));
+
+        if (result && result.whatsapp_url) {
+          window.location.href = result.whatsapp_url;
+          return;
+        }
+      } catch (err) {
+        console.warn('[LP] CRM indisponível (popup promo):', err);
+      }
+      window.location.href = fallbackUrl;
     }
 
     function fecharCapturaWA() {
@@ -1602,6 +1633,10 @@
             offer: 'pedagogia_pos_50_desconto'
           });
           fecharPopupPromo();
+          abrirWhatsAppRotacao(
+            'lp_magisterio_popup_promo',
+            'https://wa.me/5511994687149?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20promo%C3%A7%C3%A3o%20Pedagogia%20para%20Magist%C3%A9rio%20%2B%20P%C3%B3s-gradua%C3%A7%C3%A3o.'
+          );
         });
       }
     })();
